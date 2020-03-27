@@ -1,10 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-    </div>
-    <router-view />
+    <router-view></router-view>
+
+    <!-- tab-bar -->
+    <tab-bar></tab-bar>
   </div>
 </template>
 
-<style lang="scss"></style>
+<script>
+import TabBar from './components/common/tabbar'
+export default {
+  components: {
+    TabBar
+  }
+}
+</script>
+
+<style lang="scss">
+@import "./assets/icon/iconfont.css";
+</style>
