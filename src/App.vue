@@ -3,19 +3,25 @@
     <router-view></router-view>
 
     <!-- tab-bar -->
-    <tab-bar></tab-bar>
+    <i-tab-bar></i-tab-bar>
   </div>
 </template>
 
 <script>
-import TabBar from './components/common/tabbar'
+import ITabBar from './components/common/ITabBar.vue'
 export default {
   components: {
-    TabBar
+    ITabBar
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 @import "./assets/icon/iconfont.css";
+
+#app {
+  max-width: 750px;
+  height: 100%;
+  margin: 0 auto;
+}
 </style>

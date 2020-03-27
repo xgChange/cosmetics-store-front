@@ -6,7 +6,7 @@
           <span>{{item.name}}</span>
           <template #icon="props">
             <i
-              :class="[props.active ? `iconfont icon-${item.alias}-active` : `iconfont icon-${item.alias}`]"
+              :class="[props.active ? `my-icon my-icon-${item.alias}-active` : `my-icon my-icon-${item.alias}`]"
             ></i>
           </template>
         </van-tabbar-item>
@@ -34,5 +34,5 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>
