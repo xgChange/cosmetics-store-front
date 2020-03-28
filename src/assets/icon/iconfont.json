@@ -6,6 +6,62 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1092143",
+      "name": "火爆",
+      "font_class": "huobao",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "1418241",
+      "name": "新品",
+      "font_class": "xinpin",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "6879695",
+      "name": "护肤品",
+      "font_class": "hufupin",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "7866174",
+      "name": "面膜",
+      "font_class": "mianmo",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "8281571",
+      "name": "洗面奶",
+      "font_class": "ximiannai",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "11309751",
+      "name": "口红",
+      "font_class": "kouhong",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "11312319",
+      "name": "香水",
+      "font_class": "xiangshui",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "13399036",
+      "name": "彩妆",
+      "font_class": "caizhuang",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
       "icon_id": "7817230",
       "name": "搜索",
       "font_class": "sousuo",

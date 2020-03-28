@@ -8,12 +8,21 @@ import {
   SwipeItem,
   Lazyload,
   Grid,
-  GridItem
+  GridItem,
+  Icon
 } from 'vant'
 
 Vue.use(Lazyload)
-;[Button, Tabbar, TabbarItem, Field, Swipe, SwipeItem, Grid, GridItem].forEach(
-  item => {
-    Vue.use(item)
-  }
-)
+;[
+  Button,
+  Tabbar,
+  TabbarItem,
+  Field,
+  Swipe,
+  SwipeItem,
+  Grid,
+  GridItem,
+  Icon
+].forEach(item => {
+  Vue.use(item)
+})

@@ -19,3 +19,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.index {
+  max-height: 617px;
+  overflow: auto;
+}
+</style>
