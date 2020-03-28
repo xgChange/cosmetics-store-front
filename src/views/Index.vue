@@ -1,6 +1,8 @@
 <template>
   <div class="index">
-    <i-input></i-input>
+    <van-sticky>
+      <i-input></i-input>
+    </van-sticky>
     <i-swipper></i-swipper>
     <i-grid></i-grid>
     <i-goods-grid>

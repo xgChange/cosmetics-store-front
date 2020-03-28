@@ -10,7 +10,8 @@ import {
   Grid,
   GridItem,
   Icon,
-  Image
+  Image,
+  Sticky
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -24,7 +25,8 @@ Vue.use(Lazyload)
   Grid,
   GridItem,
   Icon,
-  Image
+  Image,
+  Sticky
 ].forEach(item => {
   Vue.use(item)
 })
