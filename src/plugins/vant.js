@@ -9,7 +9,8 @@ import {
   Lazyload,
   Grid,
   GridItem,
-  Icon
+  Icon,
+  Image
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -22,7 +23,8 @@ Vue.use(Lazyload)
   SwipeItem,
   Grid,
   GridItem,
-  Icon
+  Icon,
+  Image
 ].forEach(item => {
   Vue.use(item)
 })

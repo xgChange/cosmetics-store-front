@@ -1,3 +1,8 @@
 @import './reset';
+@import './mixins';
+
+// 引入其它组件scss
 @import './i-input/i-input.scss';
 @import './i-swipper/i-swipper.scss';
+@import './i-goods-grid/i-goods-grid.scss';
+@import './i-grid/i-grid.scss';

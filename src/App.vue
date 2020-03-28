@@ -16,12 +16,13 @@ export default {
 }
 </script>
 
-<style lang="scss" >
-@import "./assets/icon/iconfont.css";
+<style lang="scss">
+@import './assets/icon/iconfont.css';
 
 #app {
   max-width: 750px;
   height: 100%;
   margin: 0 auto;
+  background: #f7f7f7;
 }
 </style>

@@ -1,0 +1,37 @@
+.i-goods-grid {
+  margin-top: 20px;
+  .van-grid-item {
+    margin-bottom: 10px;
+    .van-grid-item__content {
+      border-radius: 10px;
+      padding-bottom: 8px;
+      .i-box {
+        .i-box-intro {
+          font-size: 13px;
+          height: 38px;
+          width: 159px;
+          line-height: 20px;
+          font-weight: bold;
+          @include ellisis2(2);
+        }
+        .i-box-price {
+          margin: 10px 0;
+          font-size: 16px;
+          .flag {
+            color: #ff4422;
+            font-size: 12px;
+          }
+          .prefix {
+            color: #ff4422;
+            font-weight: bolder;
+          }
+          .comment {
+            color: #999999;
+            font-size: 12px;
+            margin-left: 12px;
+          }
+        }
+      }
+    }
+  }
+}
