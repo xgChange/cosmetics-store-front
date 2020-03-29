@@ -1,0 +1,9 @@
+.i-search {
+  display: flex;
+  .van-search {
+    flex: 1;
+    .van-search__content {
+      border-radius: 15px;
+    }
+  }
+}

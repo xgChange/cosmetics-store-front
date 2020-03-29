@@ -4,6 +4,7 @@ const Me = () => import('@/views/me/me.vue')
 const Cart = () => import('@/views/cart/cart.vue')
 const Blogs = () => import('@/views/blogs/blogs.vue')
 const CategoryContent = () => import('@/components/slide-content/ISlideContent')
+const NotFound = () => import('@/views/404/404.vue')
 
 export default [
   {
@@ -46,5 +47,14 @@ export default [
     path: '/me',
     name: '我的',
     component: Me
+  },
+  {
+    path: '/404',
+    name: 'notFound',
+    component: NotFound
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
 ]

@@ -2,15 +2,28 @@
   display: flex;
   max-height: 617px;
   overflow: auto;
-  .i-category-slidebar {
-    overflow: auto;
-    .van-sidebar-item--select {
-      color: #ee0a24;
+  flex-direction: column;
+  .i-category-search {
+    background: #ffffff;
+    .i-category-search-left {
+      font-size: 18px;
+      line-height: 54px;
+      text-align: center;
+      width: 90px;
     }
   }
-  .i-category-content {
-    float: left;
-    flex: 1;
-    overflow: auto;
+  .i-category-tab {
+    display: flex;
+    .i-category-slidebar {
+      overflow: auto;
+      .van-sidebar-item--select {
+        color: #ee0a24;
+      }
+    }
+    .i-category-content {
+      float: left;
+      flex: 1;
+      overflow: auto;
+    }
   }
 }

@@ -13,7 +13,8 @@ import {
   Image,
   Sticky,
   Sidebar,
-  SidebarItem
+  SidebarItem,
+  Search
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -30,7 +31,8 @@ Vue.use(Lazyload)
   Image,
   Sticky,
   Sidebar,
-  SidebarItem
+  SidebarItem,
+  Search
 ].forEach(item => {
   Vue.use(item)
 })
