@@ -14,7 +14,13 @@ import {
   Sticky,
   Sidebar,
   SidebarItem,
-  Search
+  Search,
+  SubmitBar,
+  Card,
+  NavBar,
+  Stepper,
+  Checkbox,
+  CheckboxGroup
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -32,7 +38,13 @@ Vue.use(Lazyload)
   Sticky,
   Sidebar,
   SidebarItem,
-  Search
+  Search,
+  SubmitBar,
+  Card,
+  NavBar,
+  Stepper,
+  Checkbox,
+  CheckboxGroup
 ].forEach(item => {
   Vue.use(item)
 })

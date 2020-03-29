@@ -17,7 +17,7 @@
 import IInput from '../components/common/IInput'
 import ISwipper from '../components/common/ISwipper'
 import IGrid from '../components/common/IGrid'
-import IGoodsGrid from '../components/common/iGoodsGrid'
+import IGoodsGrid from '../components/common/IGoodsGrid'
 export default {
   name: 'Index',
   components: {

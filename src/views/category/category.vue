@@ -13,7 +13,9 @@
       </div>
 
       <div class="i-category-content">
-        <router-view :s="activeKey"></router-view>
+        <keep-alive>
+          <router-view :s="activeKey"></router-view>
+        </keep-alive>
       </div>
     </div>
   </div>
@@ -44,9 +46,7 @@ export default {
     refreshKey () {
       let title = parseInt(this.$route.query.title)
       if (title <= this.categoryName.length - 1) {
-        this.$nextTick(() => {
-          this.activeKey = title
-        })
+        this.activeKey = title
       } else {
         this.$router.replace('/404')
       }

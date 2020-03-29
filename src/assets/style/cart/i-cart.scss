@@ -1,0 +1,43 @@
+.i-cart {
+  .i-cart-top-bar {
+    .van-nav-bar__title {
+      font-weight: bolder;
+      font-size: 18px;
+    }
+    .van-nav-bar__right {
+      span {
+        color: black;
+      }
+    }
+  }
+  .i-cart-mid-info {
+    padding: 10px;
+
+    .van-checkbox-group {
+      border-radius: 10px;
+      .van-checkbox {
+        background: #ffffff;
+        margin-bottom: 10px;
+      }
+      .van-checkbox__icon {
+        padding-left: 8px;
+      }
+      .van-checkbox {
+        .van-checkbox__label {
+          margin-left: 0;
+          width: 100%;
+          .van-card {
+            background: transparent;
+            padding: 8px;
+          }
+        }
+      }
+    }
+  }
+  .i-cart-end-submit {
+    .van-submit-bar {
+      position: absolute;
+      bottom: 50px;
+    }
+  }
+}
