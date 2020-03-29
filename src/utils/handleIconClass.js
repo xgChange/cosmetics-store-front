@@ -4,12 +4,13 @@
 
 const tabName = [
   {
-    path: '/',
+    path: '/index',
     name: '首页',
     alias: 'index'
   },
   {
-    path: '/category',
+    path: '/category/tabs',
+    query: { title: 0 },
     name: '分类',
     alias: 'category'
   },

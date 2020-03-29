@@ -3,18 +3,34 @@ const Category = () => import('@/views/category/category.vue')
 const Me = () => import('@/views/me/me.vue')
 const Cart = () => import('@/views/cart/cart.vue')
 const Blogs = () => import('@/views/blogs/blogs.vue')
+const CategoryContent = () => import('@/components/slide-content/ISlideContent')
 
 export default [
   {
     path: '/',
+    redirect: '/index'
+  },
+  {
+    path: '/index',
     name: '首页',
-    component: Index,
-    alias: '/index'
+    component: Index
   },
   {
     path: '/category',
     name: '分类',
-    component: Category
+    component: Category,
+    redirect: {
+      path: '/category/tabs',
+      query: {
+        title: 0
+      }
+    },
+    children: [
+      {
+        path: 'tabs',
+        component: CategoryContent
+      }
+    ]
   },
   {
     path: '/blogs',

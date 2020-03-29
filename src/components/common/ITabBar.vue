@@ -1,8 +1,13 @@
 <template>
   <div>
-    <van-tabbar route safe-area-inset-bottom fixed>
+    <van-tabbar safe-area-inset-bottom fixed route>
       <template v-for="(item, index) in tabName">
-        <van-tabbar-item replace :to="item.path" icon="home-o" :key="index">
+        <van-tabbar-item
+          replace
+          :to="{path: item.path, query: item.query}"
+          icon="home-o"
+          :key="index"
+        >
           <span>{{item.name}}</span>
           <template #icon="props">
             <i
@@ -20,7 +25,8 @@ import { tabName } from '../../utils/handleIconClass'
 export default {
   data () {
     return {
-      tabName: []
+      tabName: [],
+      active: 0
     }
   },
   created () {

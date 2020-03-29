@@ -11,7 +11,9 @@ import {
   GridItem,
   Icon,
   Image,
-  Sticky
+  Sticky,
+  Sidebar,
+  SidebarItem
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -26,7 +28,9 @@ Vue.use(Lazyload)
   GridItem,
   Icon,
   Image,
-  Sticky
+  Sticky,
+  Sidebar,
+  SidebarItem
 ].forEach(item => {
   Vue.use(item)
 })
