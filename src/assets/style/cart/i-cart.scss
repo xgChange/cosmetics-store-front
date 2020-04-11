@@ -1,12 +1,15 @@
 .i-cart {
   .i-cart-top-bar {
-    .van-nav-bar__title {
-      font-weight: bolder;
-      font-size: 18px;
-    }
-    .van-nav-bar__right {
-      span {
-        color: black;
+    .van-nav-bar {
+      background: rgb(230, 107, 87);
+      .van-nav-bar__title {
+        color: #ffffff;
+        font-size: 18px;
+      }
+      .van-nav-bar__right {
+        span {
+          color: #ffffff;
+        }
       }
     }
   }

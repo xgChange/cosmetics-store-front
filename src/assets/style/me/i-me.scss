@@ -1,0 +1,86 @@
+.i-me {
+  .i-me-top {
+    height: 200px;
+    background: url('~@/assets/image/header_bg.png') no-repeat center;
+    background-size: 100% 100%;
+
+    .i-me-top-info {
+      display: flex;
+      justify-content: space-between;
+      .i-me-top-info-avatar {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 0 0 10px;
+        color: snow;
+
+        .van-image {
+          width: 60px;
+        }
+        .i-me-top-userInfo {
+          font-size: 18px;
+          line-height: 60px;
+          padding-left: 10px;
+        }
+      }
+      .my-icon {
+        margin-right: 20px;
+        &:before {
+          font-size: 25px;
+          line-height: 50px;
+        }
+      }
+    }
+
+    .i-me-top-mid {
+      margin-top: 20px;
+      display: flex;
+      .i-me-top-mid-collect,
+      .i-me-top-mid-history {
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+        margin: 0 auto;
+        text-align: center;
+        color: snow;
+        .text {
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+  .i-me-myorder {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin: 0 auto;
+    background: white;
+    .i-me-myorder-title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: 16px;
+      padding: 10px;
+      border-bottom: 1px solid #cccccc;
+    }
+    .i-me-myorder-info {
+      display: flex;
+      .i-me-myorder-info-box {
+        padding: 10px 0;
+        text-align: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        .my-icon {
+          padding-bottom: 5px;
+          width: 40px;
+          margin: 0 auto;
+          position: relative;
+          &::before {
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+}
