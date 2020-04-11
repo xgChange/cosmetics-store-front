@@ -1,17 +1,8 @@
 <template>
   <div class="i-grid">
     <van-grid :border="false" :column-num="4">
-      <van-grid-item
-        class="i-grid-item"
-        v-for="(item, index) in cosIconName"
-        :key="index"
-      >
-        <van-icon
-          class-prefix="my-icon"
-          :name="item.name"
-          size="30"
-          :color="item.color"
-        ></van-icon>
+      <van-grid-item class="i-grid-item" v-for="(item, index) in cosIconName" :key="index">
+        <van-icon class-prefix="my-icon" :name="item.name" size="30" :color="item.color"></van-icon>
         <span class="i-grid-item-text">{{ item.text }}</span>
       </van-grid-item>
     </van-grid>
@@ -21,16 +12,16 @@
 <script>
 import { cosIconName } from '../../utils/handleIconClass'
 export default {
-  data() {
+  data () {
     return {
       cosIconName: []
     }
   },
-  created() {
+  created () {
     this.handleIconName()
   },
   methods: {
-    handleIconName() {
+    handleIconName () {
       this.cosIconName = cosIconName
     }
   }

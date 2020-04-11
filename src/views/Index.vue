@@ -5,7 +5,7 @@
     </van-sticky>
     <i-swipper :images="images"></i-swipper>
     <i-grid></i-grid>
-    <i-goods-grid>
+    <i-goods-grid class="index-swiper">
       <div class="newProduct">
         <span>新品上架</span>
       </div>
@@ -39,8 +39,11 @@ export default {
 
 <style lang="scss" scoped>
 .index {
-  max-height: 617px;
+  max-height: 100%;
   overflow: auto;
+  .index-swiper {
+    padding-bottom: 50px;
+  }
   .newProduct {
     font-size: 16px;
     text-align: center;
