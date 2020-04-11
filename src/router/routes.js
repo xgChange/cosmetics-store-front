@@ -5,6 +5,8 @@ const Cart = () => import('@/views/cart/cart.vue')
 const Blogs = () => import('@/views/blogs/blogs.vue')
 const CategoryContent = () => import('@/components/slide-content/ISlideContent')
 const NotFound = () => import('@/views/404/404.vue')
+const GoodsList = () => import('@/views/goods-list/goodsList.vue')
+const GoodDetail = () => import('@/views/goods-detail/goodsDetail.vue')
 
 export default [
   {
@@ -47,6 +49,22 @@ export default [
     path: '/me',
     name: '我的',
     component: Me
+  },
+  {
+    path: '/goods/search',
+    name: '商品列表',
+    meta: {
+      noShowNav: true
+    },
+    component: GoodsList
+  },
+  {
+    path: '/goods/detail/:id',
+    name: '商品详情',
+    meta: {
+      noShowNav: true
+    },
+    component: GoodDetail
   },
   {
     path: '/404',

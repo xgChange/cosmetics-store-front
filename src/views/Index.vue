@@ -3,7 +3,7 @@
     <van-sticky>
       <i-input></i-input>
     </van-sticky>
-    <i-swipper></i-swipper>
+    <i-swipper :images="images"></i-swipper>
     <i-grid></i-grid>
     <i-goods-grid>
       <div class="newProduct">
@@ -20,6 +20,14 @@ import IGrid from '../components/common/IGrid'
 import IGoodsGrid from '../components/common/IGoodsGrid'
 export default {
   name: 'Index',
+  data () {
+    return {
+      images: [
+        '//img.alicdn.com/imgextra/i1/112/O1CN015RJyTr1ChKwyV4e2Y_!!112-0-luban.jpg',
+        '//gw.alicdn.com/imgextra/i1/822255/O1CN01BboFEP1SWpiV4XJGc_!!822255-0-lubanu.jpg'
+      ]
+    }
+  },
   components: {
     IInput,
     ISwipper,

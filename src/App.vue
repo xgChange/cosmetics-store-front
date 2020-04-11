@@ -5,7 +5,7 @@
     </keep-alive>
 
     <!-- tab-bar -->
-    <i-tab-bar></i-tab-bar>
+    <i-tab-bar v-show="!noShowNav"></i-tab-bar>
   </div>
 </template>
 
@@ -14,12 +14,24 @@ import ITabBar from './components/common/ITabBar.vue'
 export default {
   components: {
     ITabBar
+  },
+  data () {
+    return {
+      noShowNav: false
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      let { meta } = to
+      console.log(to)
+      this.noShowNav = meta.noShowNav || false
+    }
   }
 }
 </script>
 
 <style lang="scss">
-@import './assets/icon/iconfont.css';
+@import "./assets/icon/iconfont.css";
 
 #app {
   max-width: 750px;
