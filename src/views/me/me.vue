@@ -3,7 +3,7 @@
     <div class="i-me-top">
       <div class="i-me-top-info">
         <div class="i-me-top-info-avatar">
-          <van-image :src="avatar" :round="isRound"></van-image>
+          <van-image :src="avatar" round></van-image>
           <div class="i-me-top-userInfo">
             <span>xgChange</span>
           </div>
@@ -52,8 +52,7 @@
 export default {
   data () {
     return {
-      avatar: require('@/assets/image/default.png'),
-      isRound: true
+      avatar: require('@/assets/image/default.png')
     }
   },
   methods: {
