@@ -8,7 +8,7 @@
             <span>xgChange</span>
           </div>
         </div>
-        <van-icon class-prefix="my-icon" name="shezhi"></van-icon>
+        <van-icon class-prefix="my-icon" name="shezhi" @click="openSetting"></van-icon>
       </div>
       <div class="i-me-top-mid">
         <div class="i-me-top-mid-collect">
@@ -56,7 +56,9 @@ export default {
     }
   },
   methods: {
-
+    openSetting () {
+      console.log('ffa')
+    }
   }
 }
 </script>

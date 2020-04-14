@@ -1,2 +1,94 @@
 .i-goods-detail {
+  overflow: auto;
+  max-height: 100%;
+  .i-goods-detail-intro-box {
+    background: white;
+    .intro-box-top {
+      padding-top: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .intro-box-top-price {
+        margin-left: 10px;
+        .price {
+          font-size: 30px;
+          color: $color-common;
+          font-weight: bolder;
+        }
+      }
+
+      .van-icon {
+        margin-right: 20px;
+        text-align: center;
+        line-height: 30px;
+      }
+    }
+    .intro-box-content {
+      padding: 12px 10px;
+      .title {
+        overflow: hidden;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 21px;
+      }
+      .remark {
+        margin-top: 15px;
+        overflow: hidden;
+        font-size: 14px;
+        color: #666;
+        line-height: 20px;
+      }
+    }
+  }
+  .i-goods-detail-choose-box {
+    margin-top: 10px;
+    .location {
+      .van-icon-location-o {
+        margin-left: 15px;
+        vertical-align: middle;
+      }
+      .location-text {
+        vertical-align: middle;
+      }
+    }
+
+    .choose {
+      .choose-text {
+        margin-left: 15px;
+      }
+    }
+  }
+  .i-goods-detail-comment-box {
+    margin-top: 10px;
+    background: white;
+    padding: 15px 15px;
+    .title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .title-left {
+        font-size: 18px;
+        margin-left: 10px;
+        .text {
+          font-weight: 600;
+        }
+        .remark {
+          margin-left: 5px;
+          font-size: 14px;
+        }
+      }
+      .title-right {
+        margin-right: 10px;
+        font-size: 12px;
+        color: #666666;
+      }
+    }
+    .comment-box {
+      font-size: 14px;
+    }
+  }
+  .i-goods-detail-goodsImages-box {
+    background: white;
+    margin-top: 10px;
+  }
 }

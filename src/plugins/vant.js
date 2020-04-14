@@ -20,7 +20,14 @@ import {
   NavBar,
   Stepper,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Cell,
+  CellGroup,
+  Area,
+  Sku,
+  Popup,
+  Dialog,
+  Notify
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -44,7 +51,14 @@ Vue.use(Lazyload)
   NavBar,
   Stepper,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Cell,
+  CellGroup,
+  Area,
+  Sku,
+  Popup,
+  Dialog,
+  Notify
 ].forEach(item => {
   Vue.use(item)
 })

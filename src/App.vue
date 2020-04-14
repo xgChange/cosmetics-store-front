@@ -23,7 +23,6 @@ export default {
   watch: {
     '$route' (to, from) {
       let { meta } = to
-      console.log(to)
       this.noShowNav = meta.noShowNav || false
     }
   }
