@@ -22,7 +22,7 @@
           <template #title>
             <span>地址</span>
             <van-icon name="location-o" size="16"></van-icon>
-            <span class="location-text">广东省</span>
+            <span class="location-text">{{addressInfo ? addressInfo : '湖南省怀化市鹤城区'}}</span>
           </template>
         </van-cell>
 
@@ -51,25 +51,23 @@
       <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
     </div>
 
-    <van-popup v-model="isShowArea" position="bottom" :style="{ height: '40%' }">
-      <van-area
-        @cancel="cancel"
-        @confirm="confirm"
-        :area-list="areaList"
-        :columns-placeholder="['请选择', '请选择', '请选择']"
-        title="标题"
-      />
-    </van-popup>
+    <i-address
+      :isShowArea="isShowArea"
+      :addressList="addressList"
+      @addressClose="onCloseArea"
+      @selectAddress="selectItem"
+    ></i-address>
   </div>
 </template>
 
 <script>
 import ISwipper from '../../components/common/ISwipper'
-import areaList from '../../utils/area'
+import IAddress from '../../components/common/IAddress'
 
 export default {
   components: {
-    ISwipper
+    ISwipper,
+    IAddress
   },
   data () {
     return {
@@ -77,28 +75,41 @@ export default {
         '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/92540/30/1199/142578/5dbadae0E0e17493e/63dd7b45f8e6f944.jpg!q80.dpg.webp',
         '//m.360buyimg.com/mobilecms/s1265x1265_jfs/t1/105898/34/1199/40347/5dbadae0E8a0fbd85/bf4afdd1ea0c12a8.jpg!q70.dpg.webp'
       ],
-      areaList,
       isShowArea: false,
+      chosenAddressId: '1',
+      addressList: [
+        {
+          id: '1',
+          name: '张三',
+          tel: '13000000000',
+          address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室'
+        },
+        {
+          id: '2',
+          name: '李四',
+          tel: '1310000000',
+          address: '浙江省杭州市拱墅区莫干山路 50 号'
+        }
+      ],
+      addressInfo: ''
     }
   },
   methods: {
+    onAdd () {
+      this.$router.push({ name: 'settingInfo', params: { info: 'address' }, query: { newAdd: true } })
+    },
+    onEdit (item, index) {
+      this.$router.push({ name: 'settingInfo', params: { info: 'address' }, query: { addressId: item.id } })
+    },
     switchLocation () {
       this.isShowArea = true
     },
-    cancel () {
-      this.isShowArea = false
+    onCloseArea (v) {
+      this.isShowArea = v
     },
-    confirm (e) {
-      let arr = e
-      if (arr.every(item => item && item.code && item.name)) {
-        this.isShowArea = false
-        let temp = arr.map(item => {
-          return item.name
-        })
-        console.log(temp)
-      } else {
-        this.$notify({ type: 'danger', message: '请输入完整的地址' })
-      }
+    selectItem (val) {
+      console.log(val)
+      this.addressInfo = val.address
     }
   }
 }

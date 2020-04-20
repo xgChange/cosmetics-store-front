@@ -27,7 +27,11 @@ import {
   Sku,
   Popup,
   Dialog,
-  Notify
+  Notify,
+  AddressList,
+  List,
+  Form,
+  Uploader,
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -58,7 +62,11 @@ Vue.use(Lazyload)
   Sku,
   Popup,
   Dialog,
-  Notify
-].forEach(item => {
+  Notify,
+  AddressList,
+  List,
+  Form,
+  Uploader,
+].forEach((item) => {
   Vue.use(item)
 })

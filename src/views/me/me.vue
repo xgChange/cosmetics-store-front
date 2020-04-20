@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     openSetting () {
-      console.log('ffa')
+      this.$router.push('/setting')
     }
   }
 }
