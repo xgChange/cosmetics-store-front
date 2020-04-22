@@ -58,6 +58,24 @@
           :rules="[{ required: true, message: '请填写详细地址' }]"
         />
       </div>
+      <div class="i-form-item-publish" v-if="info === 'publish'">
+        <van-field
+          v-model="formData.commentMsg"
+          rows="2"
+          name="comment"
+          autosize
+          label="评论"
+          type="textarea"
+          maxlength="50"
+          placeholder="请输入留言"
+          show-word-limit
+        />
+        <van-field name="rate" label="评分">
+          <template #input>
+            <van-rate v-model="formData.rate" />
+          </template>
+        </van-field>
+      </div>
     </van-form>
   </div>
 </template>
@@ -83,7 +101,9 @@ export default {
         nickname: '',
         password: '',
         area: '',
-        detailAddress: ''
+        detailAddress: '',
+        commentMsg: '',
+        rate: 0
       }
     }
   },

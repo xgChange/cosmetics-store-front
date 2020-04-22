@@ -1,6 +1,8 @@
 .i-goods-detail {
   overflow: auto;
   max-height: 100%;
+  position: relative;
+  z-index: 1;
   .i-goods-detail-intro-box {
     background: white;
     .intro-box-top {
@@ -69,7 +71,6 @@
       justify-content: space-between;
       .title-left {
         font-size: 18px;
-        margin-left: 10px;
         .text {
           font-weight: 600;
         }
@@ -79,9 +80,13 @@
         }
       }
       .title-right {
-        margin-right: 10px;
-        font-size: 12px;
-        color: #666666;
+        font-size: 14px;
+        span {
+          vertical-align: middle;
+        }
+        .van-icon {
+          vertical-align: middle;
+        }
       }
     }
     .comment-box {
@@ -91,5 +96,11 @@
   .i-goods-detail-goodsImages-box {
     background: white;
     margin-top: 10px;
+  }
+  .i-goods-detail-commentlist-box {
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
   }
 }

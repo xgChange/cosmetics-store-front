@@ -1,0 +1,51 @@
+.i-comment-content {
+  padding: 10px;
+  background: white;
+  .i-comment-content-box {
+    display: flex;
+    flex-direction: row;
+    .avatar {
+      .van-image {
+        width: 60px;
+      }
+    }
+    .content-box-right {
+      width: 100%;
+      padding: 5px 5px 5px 8px;
+      .box-right-top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .username {
+          font-size: 18px;
+          vertical-align: middle;
+          line-height: 25px;
+        }
+      }
+
+      .container {
+        padding: 10px 0 5px 0;
+        font-size: 16px;
+        .text {
+          @include ellisis2(4);
+          line-height: 26px;
+          word-wrap: break-word;
+        }
+        .priText {
+          line-height: 26px;
+          word-wrap: break-word;
+        }
+        .readmore {
+          margin-top: 5px;
+          color: #3d3cba;
+        }
+        .van-image {
+          margin-top: 10px;
+        }
+      }
+      .time {
+        font-size: 14px;
+      }
+    }
+  }
+}

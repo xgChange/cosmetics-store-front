@@ -32,6 +32,7 @@ import {
   List,
   Form,
   Uploader,
+  Rate,
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -67,6 +68,7 @@ Vue.use(Lazyload)
   List,
   Form,
   Uploader,
+  Rate,
 ].forEach((item) => {
   Vue.use(item)
 })

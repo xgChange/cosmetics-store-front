@@ -9,6 +9,7 @@ const GoodsList = () => import('@/views/goods-list/goodsList.vue')
 const GoodDetail = () => import('@/views/goods-detail/goodsDetail.vue')
 const Setting = () => import('@/views/setting/setting.vue')
 const SettingInfo = () => import('@/views/setting/setting-info.vue')
+const Evaluation = () => import('@/views/me/evaluation.vue')
 
 export default [
   {
@@ -51,6 +52,14 @@ export default [
     path: '/me',
     name: '我的',
     component: Me,
+  },
+  {
+    path: '/publish',
+    name: '发表评论',
+    component: Evaluation,
+    meta: {
+      noShowNav: true,
+    },
   },
   {
     path: '/goods/search',

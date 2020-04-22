@@ -27,21 +27,14 @@
         <span>查看更多订单 ></span>
       </div>
       <div class="i-me-myorder-info">
-        <div class="i-me-myorder-info-box">
-          <van-icon class-prefix="my-icon" name="daifukuan" color="#ffbd27" badge="2"></van-icon>
-          <span>待付款</span>
-        </div>
-        <div class="i-me-myorder-info-box">
-          <van-icon class-prefix="my-icon" name="daifahuo" color="#53a4fc"></van-icon>
-          <span>待发货</span>
-        </div>
-        <div class="i-me-myorder-info-box">
-          <van-icon class-prefix="my-icon" name="daishouhuo" color="#359443"></van-icon>
-          <span>待收货</span>
-        </div>
-        <div class="i-me-myorder-info-box">
-          <van-icon class-prefix="my-icon" name="daipingjia" color="#ff7b6a"></van-icon>
-          <span>待评价</span>
+        <div
+          class="i-me-myorder-info-box"
+          v-for="(item, index) in orderIcon"
+          :key="item.id"
+          @click="handle(index)"
+        >
+          <van-icon class-prefix="my-icon" :name="item.name" :color="item.color"></van-icon>
+          <span>{{item.nickName}}</span>
         </div>
       </div>
     </div>
@@ -49,15 +42,23 @@
 </template>
 
 <script>
+import { orderIcon } from '../../utils/handleIconClass'
 export default {
   data () {
     return {
-      avatar: require('@/assets/image/default.png')
+      avatar: require('@/assets/image/default.png'),
+      orderIcon
     }
   },
   methods: {
     openSetting () {
       this.$router.push('/setting')
+    },
+    handle (index) {
+      if (index === 3) {
+        console.log('待评价')
+        this.$router.push('/publish')
+      }
     }
   }
 }
