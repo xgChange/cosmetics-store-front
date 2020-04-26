@@ -9,7 +9,7 @@
 
 <script>
 import ISearch from '../../components/common/iSearch'
-import IGoodsGrid from '../../components/common/IGoodsGrid'
+import IGoodsGrid from '../../components/common/iGoodsGrid'
 
 export default {
   components: {

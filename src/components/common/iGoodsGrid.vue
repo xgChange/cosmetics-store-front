@@ -20,14 +20,14 @@
 <script>
 import { goodsList } from '../../mock/goodsList'
 export default {
-  data () {
-    return {
-      goodsList: []
-    }
+  props: {
+    goodsList: {
+      type: Array,
+    },
   },
-  created () {
-    this.goodsList = goodsList
-  }
+  data() {
+    return {}
+  },
 }
 </script>
 

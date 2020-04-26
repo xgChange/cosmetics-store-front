@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
+    <!-- <keep-alive> -->
+    <router-view></router-view>
+    <!-- </keep-alive> -->
 
     <!-- tab-bar -->
     <i-tab-bar v-show="!noShowNav"></i-tab-bar>
@@ -13,24 +13,24 @@
 import ITabBar from './components/common/ITabBar.vue'
 export default {
   components: {
-    ITabBar
+    ITabBar,
   },
-  data () {
+  data() {
     return {
-      noShowNav: false
+      noShowNav: false,
     }
   },
   watch: {
-    '$route' (to, from) {
+    $route(to, from) {
       let { meta } = to
       this.noShowNav = meta.noShowNav || false
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import "./assets/icon/iconfont.css";
+@import './assets/icon/iconfont.css';
 
 #app {
   max-width: 750px;

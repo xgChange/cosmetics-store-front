@@ -28,7 +28,7 @@ export default [
     redirect: {
       path: '/category/tabs',
       query: {
-        title: 0,
+        title: 10,
       },
     },
     children: [

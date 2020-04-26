@@ -5,7 +5,7 @@
     </van-sticky>
     <i-swipper :images="images"></i-swipper>
     <i-grid></i-grid>
-    <i-goods-grid class="index-swiper">
+    <i-goods-grid class="index-swiper" :goodsList="goodsList">
       <div class="newProduct">
         <span>新品上架</span>
       </div>
@@ -17,23 +17,30 @@
 import IInput from '../components/common/IInput'
 import ISwipper from '../components/common/ISwipper'
 import IGrid from '../components/common/IGrid'
-import IGoodsGrid from '../components/common/IGoodsGrid'
+import IGoodsGrid from '../components/common/iGoodsGrid'
+import { getGoodsCategoryInfoBywords } from '../api/goods/goods'
 export default {
   name: 'Index',
-  data () {
+  data() {
     return {
       images: [
         '//img.alicdn.com/imgextra/i1/112/O1CN015RJyTr1ChKwyV4e2Y_!!112-0-luban.jpg',
-        '//gw.alicdn.com/imgextra/i1/822255/O1CN01BboFEP1SWpiV4XJGc_!!822255-0-lubanu.jpg'
+        '//gw.alicdn.com/imgextra/i1/822255/O1CN01BboFEP1SWpiV4XJGc_!!822255-0-lubanu.jpg',
       ],
+      goodsList: [],
     }
+  },
+  created() {
+    getGoodsCategoryInfoBywords('手机2').then((res) => {
+      this.goodsList = res.data
+    })
   },
   components: {
     IInput,
     ISwipper,
     IGrid,
-    IGoodsGrid
-  }
+    IGoodsGrid,
+  },
 }
 </script>
 

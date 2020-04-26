@@ -8,53 +8,56 @@
     <div class="i-category-tab">
       <div class="i-category-slidebar">
         <van-sidebar v-model="activeKey" @change="onChange">
-          <van-sidebar-item v-for="(item, index) in categoryName" :title="item" :key="index" />
+          <van-sidebar-item
+            v-for="item in categoryNames"
+            :title="item.name"
+            :key="item.id"
+          />
         </van-sidebar>
       </div>
 
       <div class="i-category-content">
         <keep-alive>
-          <router-view :s="activeKey"></router-view>
+          <router-view></router-view>
         </keep-alive>
       </div>
     </div>
   </div>
 </template>
 
-<script> 
+<script>
 import ISearch from '../../components/common/iSearch'
+import { getGoodsCategoryAll } from '../../api/goods/goods'
+
 export default {
-  data () {
+  data() {
     return {
       activeKey: 0,
-      categoryName: ['热门推荐', '新品上架', '梦幻唇妆', '温和净卸', '魅力眉眼', '口碑面膜', '心机底妆', '完趣甲油', '美容护肤']
+      categoryNames: [],
     }
   },
-  created () {
-    // 重新设置activeKey
-    this.refreshKey()
+  created() {
+    // 获取分类
+    this.initCategory()
   },
   methods: {
-    onChange (index) {
+    onChange(index) {
       this.$router.push({
         path: '/category/tabs',
         query: {
-          title: index
-        }
+          title: this.categoryNames[index].id,
+        },
       })
     },
-    refreshKey () {
-      let title = parseInt(this.$route.query.title)
-      if (title <= this.categoryName.length - 1) {
-        this.activeKey = title
-      } else {
-        this.$router.replace('/404')
-      }
-    }
+    initCategory() {
+      getGoodsCategoryAll().then((res) => {
+        const { data } = res
+        this.categoryNames = data.categoryNames
+      })
+    },
   },
   components: {
-    ISearch
-  }
+    ISearch,
+  },
 }
 </script>
-

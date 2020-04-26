@@ -1,0 +1,58 @@
+const axios = require('axios')
+const baseURL = process.env.NODE_ENV === 'production' ? '/' : '/api'
+
+class HttpRequest {
+  constructor(baseUrl = baseURL) {
+    this.baseURL = baseUrl
+  }
+  getInsideConfig() {
+    const config = {
+      baseURL: this.baseURL,
+      headers: {},
+    }
+    return config
+  }
+  //  拦截器
+  interceptors(instance, url) {
+    //  请求拦截
+    instance.interceptors.request.use(
+      (config) => {
+        // console.log('请求拦截：', config)
+
+        // 将Token设置到headers中
+        return config
+      },
+      (err) => {
+        return Promise.reject(err)
+      }
+    )
+
+    // 响应拦截
+    instance.interceptors.response.use(
+      (res) => {
+        // console.log('响应拦截', res)
+        if (res.status === 200) {
+          const { data, errCode } = res.data
+          if (!errCode) {
+            return {
+              data,
+              errCode,
+            }
+          }
+        }
+        return res
+      },
+      (err) => {
+        return Promise.reject(err)
+      }
+    )
+  }
+  request(options, url) {
+    const instance = axios.create()
+    options = Object.assign(this.getInsideConfig(), options)
+    this.interceptors(instance, url)
+    return instance(options)
+  }
+}
+
+export default HttpRequest
