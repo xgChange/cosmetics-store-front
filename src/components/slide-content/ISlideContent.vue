@@ -19,6 +19,11 @@
 import { getGoodsCategoryInfoBywords } from '../../api/goods/goods'
 
 export default {
+  props: {
+    secondCategory: {
+      type: Array,
+    },
+  },
   data() {
     return {
       goodsArr: [],
@@ -31,7 +36,14 @@ export default {
   watch: {
     $route(v) {
       let { title } = v.query
-      this.initGoods(title)
+      if (title === 10) {
+        this.initGoods(title)
+      }
+    },
+    secondCategory(v) {
+      if (this.$route.query.title !== '10') {
+        this.goodsArr = v
+      }
     },
   },
   methods: {

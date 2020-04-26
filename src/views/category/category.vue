@@ -18,7 +18,7 @@
 
       <div class="i-category-content">
         <keep-alive>
-          <router-view></router-view>
+          <router-view :secondCategory="secondCategory"></router-view>
         </keep-alive>
       </div>
     </div>
@@ -34,6 +34,7 @@ export default {
     return {
       activeKey: 0,
       categoryNames: [],
+      secondCategory: [],
     }
   },
   created() {
@@ -48,11 +49,13 @@ export default {
           title: this.categoryNames[index].id,
         },
       })
+      this.secondCategory = this.categoryNames[index].children
     },
     initCategory() {
       getGoodsCategoryAll().then((res) => {
         const { data } = res
         this.categoryNames = data.categoryNames
+        console.log('www', this.categoryNames)
       })
     },
   },
