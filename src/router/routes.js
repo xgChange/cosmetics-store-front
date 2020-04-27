@@ -10,6 +10,8 @@ const GoodDetail = () => import('@/views/goods-detail/goodsDetail.vue')
 const Setting = () => import('@/views/setting/setting.vue')
 const SettingInfo = () => import('@/views/setting/setting-info.vue')
 const Evaluation = () => import('@/views/me/evaluation.vue')
+const Login = () => import('@/views/me/login/login.vue')
+const Register = () => import('@/views/me/register/register.vue')
 
 export default [
   {
@@ -52,6 +54,22 @@ export default [
     path: '/me',
     name: '我的',
     component: Me,
+  },
+  {
+    path: '/register',
+    name: '注册',
+    component: Register,
+    meta: {
+      noShowNav: true,
+    },
+  },
+  {
+    path: '/login',
+    name: '登录',
+    component: Login,
+    meta: {
+      noShowNav: true,
+    },
   },
   {
     path: '/publish',

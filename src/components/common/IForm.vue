@@ -1,10 +1,17 @@
 <template>
   <div class="i-form">
     <van-form @submit="formSubmit" ref="vantForm">
-      <div class="i-form-item-userInfo" v-if="info === 'userInfo'">
-        <van-field name="avatar" input-align="center">
+      <div
+        class="i-form-item-userInfo"
+        v-if="info === 'userInfo' || info === 'register' || info === 'login'"
+      >
+        <van-field
+          name="picture"
+          input-align="center"
+          v-if="info === 'userInfo' || info === 'register'"
+        >
           <template #input>
-            <van-uploader v-if="info === 'userInfo'">
+            <van-uploader>
               <van-image
                 round
                 width="3rem"
@@ -16,19 +23,47 @@
           </template>
         </van-field>
         <van-field
+          v-if="info === 'register' || info === 'login'"
+          v-model="formData.username"
+          name="username"
+          label="用户名"
+          placeholder="用户名"
+          :rules="[{ required: true, message: '请填写用户名' }]"
+        />
+        <van-field
+          v-if="info === 'register' || info === 'userInfo'"
           v-model="formData.nickname"
-          name="nickName"
+          name="nickname"
           label="昵称"
           placeholder="昵称"
           :rules="[{ required: true, message: '请填写昵称' }]"
         />
         <van-field
+          v-if="info === 'register' || info === 'login'"
           v-model="formData.password"
           type="password"
           name="password"
           label="密码"
           placeholder="密码"
-          :rules="[{ required: true, message: '请填写密码' }]"
+          :rules="[{ required: true, message: '请填写密码' }, {validator: validate('password'), message: '密码至少6位'}]"
+        />
+        <van-field
+          v-if="info === 'register'"
+          v-model="formData.newpassword"
+          type="password"
+          name="password"
+          label="密码"
+          placeholder="再输入一次密码"
+          :rules="[{ required: true, message: '请填写密码' }, {validator: validate('newpassword'), message: '两次密码不一致'}]"
+        />
+        <van-field
+          v-if="info === 'register' || info === 'userInfo'"
+          v-model="formData.phone"
+          name="phone"
+          label="手机"
+          placeholder="手机号码"
+          maxlength="11"
+          :rules="[{ required: true, message: '请填写手机号码' }, {validator: validate('phone'), message: '请输入正确的手机号码'}]"
         />
       </div>
       <div class="i-form-item-address" v-if="info === 'address'">
@@ -103,7 +138,9 @@ export default {
         area: '',
         detailAddress: '',
         commentMsg: '',
-        rate: 0
+        rate: 0,
+        username: '',
+        newpassword: ''
       }
     }
   },
@@ -112,7 +149,20 @@ export default {
       this.$refs.vantForm.submit()
     },
     formSubmit (e) {
-      console.log('form', e)
+      this.$emit('submitCb', e)
+    },
+    validate (p) {
+      return (c) => {
+        if (p === 'phone') {
+          return /^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/.test(c)
+        }
+        if (p === 'password') {
+          return c.length >= 6 ? true : false
+        }
+        if (p === 'newpassword') {
+          return c.length >= 6 && c === this.formData.password ? true : false
+        }
+      }
     },
     onConfirm (e) {
       let arr = e

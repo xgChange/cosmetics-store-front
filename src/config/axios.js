@@ -20,6 +20,8 @@ class HttpRequest {
         // console.log('请求拦截：', config)
 
         // 将Token设置到headers中
+        if (localStorage.getItem('myToken'))
+          config.headers.Authorization = localStorage.getItem('myToken')
         return config
       },
       (err) => {
@@ -32,12 +34,11 @@ class HttpRequest {
       (res) => {
         // console.log('响应拦截', res)
         if (res.status === 200) {
-          const { data, errCode } = res.data
-          if (!errCode) {
-            return {
-              data,
-              errCode,
-            }
+          const { data, errCode, message } = res.data
+          return {
+            data,
+            errCode,
+            message,
           }
         }
         return res
