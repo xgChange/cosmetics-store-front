@@ -16,14 +16,7 @@ const router = new VueRouter({
   routes,
 })
 
-const unlessPath = [
-  /^\/login/,
-  /^\/register/,
-  /^\/category/,
-  /^\/goods/,
-  /^\/index/,
-  /^\/me/,
-]
+const unlessPath = [/^\/login/, /^\/register/, /^\/category/, /^\/goods/]
 
 const unless = function(path, unlessPath) {
   return unlessPath.some((item) => item.test(path))
@@ -32,7 +25,6 @@ const unless = function(path, unlessPath) {
 router.beforeEach((to, from, next) => {
   const isLogin = localStorage.getItem('myToken') ? true : false
   if (unless(to.path, unlessPath) || to.path === '/') {
-    console.log('ss')
     next()
   } else {
     if (isLogin) {

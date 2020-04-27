@@ -19,9 +19,11 @@ import ISwipper from '../components/common/ISwipper'
 import IGrid from '../components/common/IGrid'
 import IGoodsGrid from '../components/common/iGoodsGrid'
 import { getGoodsCategoryInfoBywords } from '../api/goods/goods'
+import { getUserInfo } from '../api/user/user'
+
 export default {
   name: 'Index',
-  data() {
+  data () {
     return {
       images: [
         '//img.alicdn.com/imgextra/i1/112/O1CN015RJyTr1ChKwyV4e2Y_!!112-0-luban.jpg',
@@ -30,7 +32,7 @@ export default {
       goodsList: [],
     }
   },
-  created() {
+  created () {
     getGoodsCategoryInfoBywords('手机2').then((res) => {
       this.goodsList = res.data
     })

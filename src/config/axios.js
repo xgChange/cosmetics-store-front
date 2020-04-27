@@ -21,7 +21,8 @@ class HttpRequest {
 
         // 将Token设置到headers中
         if (localStorage.getItem('myToken'))
-          config.headers.Authorization = localStorage.getItem('myToken')
+          config.headers.Authorization =
+            'Bearer ' + localStorage.getItem('myToken')
         return config
       },
       (err) => {

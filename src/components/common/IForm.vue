@@ -68,6 +68,21 @@
       </div>
       <div class="i-form-item-address" v-if="info === 'address'">
         <van-field
+          v-model="formData.receiver"
+          name="receiver"
+          label="收件人"
+          placeholder="收件人"
+          :rules="[{ required: true, message: '收件人名字' }]"
+        />
+        <van-field
+          v-model="formData.receiverPhone"
+          name="receiverPhone"
+          label="手机"
+          placeholder="收件人的手机号码"
+          maxlength="11"
+          :rules="[{ required: true, message: '请填写收件人的手机号码' }, {validator: validate('phone'), message: '请输入正确的手机号码'}]"
+        />
+        <van-field
           readonly
           clickable
           name="area"
@@ -117,7 +132,7 @@
 
 <script>
 import areaList from '@/utils/area.js'
-import { unique } from '@/utils/utilsMethods.js'
+import { unique, strTrim } from '@/utils/utilsMethods.js'
 
 export default {
   props: {
@@ -132,6 +147,7 @@ export default {
     return {
       showArea: false,
       areaList,
+      oldUserInfo: {},
       formData: {
         nickname: '',
         password: '',
@@ -140,7 +156,10 @@ export default {
         commentMsg: '',
         rate: 0,
         username: '',
-        newpassword: ''
+        newpassword: '',
+        phone: '',
+        receiver: '',
+        receiverPhone: ''
       }
     }
   },
@@ -149,6 +168,12 @@ export default {
       this.$refs.vantForm.submit()
     },
     formSubmit (e) {
+      if (e.picture) {
+        e.picture = e.picture.join(';')
+      }
+      if (e.area && e.detailAddress) {
+        e.address = strTrim(`${e.area}${e.detailAddress}`)
+      }
       this.$emit('submitCb', e)
     },
     validate (p) {
@@ -173,6 +198,17 @@ export default {
       } else {
         this.$notify({ type: 'danger', message: '请输入完整的地址' })
       }
+    },
+    mergeFormData (o1, o2) {
+      return Object.assign(o1, o2)
+    }
+  },
+  created () {
+    this.formData = this.mergeFormData(this.formData, this.query)
+  },
+  watch: {
+    query (v) {
+      this.formData = this.mergeFormData(this.formData, v)
     }
   }
 }

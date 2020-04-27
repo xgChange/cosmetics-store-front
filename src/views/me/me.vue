@@ -5,7 +5,7 @@
         <div class="i-me-top-info-avatar">
           <van-image :src="avatar" round></van-image>
           <div class="i-me-top-userInfo">
-            <span>xgChange</span>
+            <span>{{userInfo.nickname}}</span>
           </div>
         </div>
         <van-icon class-prefix="my-icon" name="shezhi" @click="openSetting"></van-icon>
@@ -48,6 +48,11 @@ export default {
     return {
       avatar: require('@/assets/image/default.png'),
       orderIcon
+    }
+  },
+  computed: {
+    userInfo () {
+      return this.$store.state.user.userInfo
     }
   },
   methods: {

@@ -15,4 +15,12 @@ const unique = function(arr) {
   return newArr
 }
 
-export { unique }
+/**
+ * @description 去除字符串中所有空格
+ */
+
+function strTrim(str) {
+  return (str = str.replace(/\s+/g, ''))
+}
+
+export { unique, strTrim }
