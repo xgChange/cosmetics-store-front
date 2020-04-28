@@ -7,7 +7,7 @@
       :show-action="showCancel"
       @search="onSearch"
       @cancel="onCancel"
-      @focus="showCancel = true"
+      @focus="focus"
     />
   </div>
 </template>
@@ -21,6 +21,11 @@ export default {
       showCancel: false
     }
   },
+  props: {
+    go: {
+      type: String
+    }
+  },
   methods: {
     onSearch (key) {
       searchGoodsByWords(key).then(res => {
@@ -30,6 +35,12 @@ export default {
       })
     },
     onCancel () {
+      this.showCancel = false
+    },
+    focus () {
+      if (this.go === 'category') {
+        this.$router.push('/goods/search')
+      }
       this.showCancel = false
     }
   }

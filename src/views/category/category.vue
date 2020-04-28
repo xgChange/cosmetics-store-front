@@ -1,7 +1,7 @@
 <template>
   <div class="i-category">
     <div class="i-category-search">
-      <i-search>
+      <i-search go="category">
         <div class="i-category-search-left">商品分类</div>
       </i-search>
     </div>
