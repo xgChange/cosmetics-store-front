@@ -38,12 +38,12 @@ export default {
       this.$refs.iForm.onSubmit()
     },
     submitCallback (data) {
-      console.log(data, this.$route.query.newAdd)
       if (this.showInfo === 'address') {
         const { address, receiver, receiverPhone } = data
-        if (this.$route.query.newAdd === 'true') {
+        if (this.$route.query.newAdd) {
           createAddressInfo({ name: receiver, address: address, tel: receiverPhone }).then(res => {
             if (res.errCode === 0) {
+              localStorage.removeItem('userInfo')
               this.$dialog.alert({
                 message: '添加成功'
               }).then(() => {
@@ -67,7 +67,7 @@ export default {
         }
       }
       if (this.showInfo === 'userInfo') {
-        updateUserInfo({ address: data.address }).then(res => {
+        updateUserInfo(data).then(res => {
           if (res.errCode === 0) {
             localStorage.removeItem('userInfo')
             this.$dialog.alert({
@@ -83,13 +83,13 @@ export default {
   },
   computed: {
     queryObj () {
-      const { id, nickname, phone, picture, address } = this.$store.state.user.userInfo
+      const { id, nickname, phone, picture, t_addresses } = this.$store.state.user.userInfo
       return {
         id,
         nickname,
         phone,
         picture,
-        address
+        t_addresses
       }
     }
   },

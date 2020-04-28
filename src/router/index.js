@@ -16,7 +16,13 @@ const router = new VueRouter({
   routes,
 })
 
-const unlessPath = [/^\/login/, /^\/register/, /^\/category/, /^\/goods/]
+const unlessPath = [
+  /^\/login/,
+  /^\/register/,
+  /^\/category/,
+  /^\/goods/,
+  /^\/index/,
+]
 
 const unless = function(path, unlessPath) {
   return unlessPath.some((item) => item.test(path))
