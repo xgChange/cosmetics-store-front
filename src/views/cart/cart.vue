@@ -5,23 +5,23 @@
     </div>
     <div class="i-cart-mid-info">
       <van-checkbox-group v-model="checkGroup" ref="checkboxGroup">
-        <van-checkbox name="a" label-disabled>
+        <van-checkbox :name="a" label-disabled v-for="(item, index) in cartStore" :key="index">
           <van-card
-            :num="value"
-            price="2.00"
-            desc="描述信息"
-            title="商品标题"
-            thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
+            :num="item.count"
+            :price="item.price * item.count"
+            :desc="item.color"
+            :title="item.name"
+            :thumb="item.poster"
           >
             <template #footer>
-              <van-stepper v-model="value" />
+              <van-stepper v-model="item.count" />
             </template>
           </van-card>
         </van-checkbox>
       </van-checkbox-group>
     </div>
     <div class="i-cart-end-submit">
-      <van-submit-bar :price="3050" button-text="提交订单" @submit="onSubmit">
+      <van-submit-bar :price="price" button-text="提交订单" @submit="onSubmit">
         <van-checkbox v-model="allChecked">全选</van-checkbox>
       </van-submit-bar>
     </div>
@@ -33,10 +33,32 @@
 export default {
   data () {
     return {
-      value: 1,
       allChecked: false,
       checked: false,
-      checkGroup: []
+      checkGroup: [],
+      cartStore: [],
+      price: 0
+    }
+  },
+  created () {
+    let str = localStorage.getItem('cartStore')
+    if (str) {
+      let temp = JSON.parse(str)
+      this.cartStore = temp.map(item => {
+        item.price = item.price / 100
+        return item
+      })
+    }
+  },
+  watch: {
+    cartStore: {
+      handler (v) {
+        let price = v.reduce((cur, next) => {
+          return cur.count * cur.price + next.count * next.price
+        })
+        this.price = price
+      },
+      deep: true
     }
   },
   methods: {

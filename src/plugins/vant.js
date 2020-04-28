@@ -33,6 +33,10 @@ import {
   Form,
   Uploader,
   Rate,
+  Divider,
+  RadioGroup,
+  Radio,
+  Toast,
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -69,6 +73,10 @@ Vue.use(Lazyload)
   Form,
   Uploader,
   Rate,
+  Divider,
+  RadioGroup,
+  Radio,
+  Toast,
 ].forEach((item) => {
   Vue.use(item)
 })

@@ -57,28 +57,23 @@
       @selectAddress="selectItem"
     ></i-address>
 
-    <van-sku
-      v-model="showSku"
-      :sku="skuData.sku"
-      :goods="skuData.goods_info"
-      :goods-id="skuData.goods_id"
-      :hide-stock="skuData.sku.hide_stock"
-      @buy-clicked="onBuyClicked"
-      @add-cart="onAddCartClicked"
-    />
+    <van-popup round v-model="showSku" position="bottom" :style="{ height: '55%' }">
+      <i-sku @onBuy="buy" :skuDetail="skuDetail"></i-sku>
+    </van-popup>
   </div>
 </template>
 
 <script>
 import ISwipper from '../../components/common/ISwipper'
 import IAddress from '../../components/common/IAddress'
-import { goodsDetailData } from '../../mock/goodsList'
 import { getGoodsDetailBywords } from '../../api/goods/goods'
+import ISku from '../common/ISku'
 
 export default {
   components: {
     ISwipper,
     IAddress,
+    ISku
   },
   data () {
     return {
@@ -88,9 +83,10 @@ export default {
       ],
       isShowArea: false,
       showSku: false,
-      skuData: goodsDetailData,
       addressInfo: '',
-      goodsDetailData: {}
+      goodsDetailData: {},
+      skuDetail: {},
+      cartStore: []
     }
   },
   created () {
@@ -125,16 +121,37 @@ export default {
     showComment () {
       this.$emit('showComment', true)
     },
-    onBuyClicked (e) {
-      console.log(e)
+    buy (d) {
+      let goodsTempInfo = Object.assign(this.goodsDetailData, d)
+      console.log(goodsTempInfo)
     },
-    onAddCartClicked (e) {
-      console.log(e)
-    },
+    // addCart (d) {
+    //   let goodsTempInfo = Object.assign(this.goodsDetailData, d)
+
+    //   let str = localStorage.getItem('cartStore')
+    //   if (str) {
+    //     let arr = JSON.parse(str)
+    //     if (arr.some(item => item.color === goodsTempInfo.color)) {
+    //       this.$toast.fail('只能添加一种')
+    //       return
+    //     }
+    //     arr.push(goodsTempInfo)
+    //     this.$store.dispatch('setGoodsInfo', arr)
+    //     localStorage.setItem('cartStore', JSON.stringify(arr))
+    //   } else {
+    //     this.cartStore.push(goodsTempInfo)
+    //     this.$store.dispatch('setGoodsInfo', this.cartStore)
+    //     localStorage.setItem('cartStore', JSON.stringify(this.cartStore))
+    //   }
+    //   this.$toast.success('添加成功')
+    // },
     getGoodsDetail (key) {
       getGoodsDetailBywords(key).then(res => {
         if (res.errCode === 0) {
           this.goodsDetailData = res.data[0]
+          this.goodsDetailData.price = this.goodsDetailData.price / 100
+          this.skuDetail = JSON.parse(this.goodsDetailData.detail)
+          this.skuDetail.price = this.goodsDetailData.price
         }
       })
     }

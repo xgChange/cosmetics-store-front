@@ -19,11 +19,11 @@ const tabName = [
     name: '博客',
     alias: 'blogs',
   },
-  {
-    path: '/cart',
-    name: '购物车',
-    alias: 'cart',
-  },
+  // {
+  //   path: '/cart',
+  //   name: '购物车',
+  //   alias: 'cart',
+  // },
   {
     path: '/me',
     name: '我的',

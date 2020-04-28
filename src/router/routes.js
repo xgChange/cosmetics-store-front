@@ -45,11 +45,11 @@ export default [
     name: '博客',
     component: Blogs,
   },
-  {
-    path: '/cart',
-    name: '购物车',
-    component: Cart,
-  },
+  // {
+  //   path: '/cart',
+  //   name: '购物车',
+  //   component: Cart,
+  // },
   {
     path: '/me',
     name: '我的',
