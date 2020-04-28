@@ -8,11 +8,7 @@
     <div class="i-category-tab">
       <div class="i-category-slidebar">
         <van-sidebar v-model="activeKey" @change="onChange">
-          <van-sidebar-item
-            v-for="item in categoryNames"
-            :title="item.name"
-            :key="item.id"
-          />
+          <van-sidebar-item v-for="item in categoryNames" :title="item.name" :key="item.id" />
         </van-sidebar>
       </div>
 
@@ -30,19 +26,19 @@ import ISearch from '../../components/common/iSearch'
 import { getGoodsCategoryAll } from '../../api/goods/goods'
 
 export default {
-  data() {
+  data () {
     return {
       activeKey: 0,
       categoryNames: [],
       secondCategory: [],
     }
   },
-  created() {
+  created () {
     // 获取分类
     this.initCategory()
   },
   methods: {
-    onChange(index) {
+    onChange (index) {
       this.$router.push({
         path: '/category/tabs',
         query: {
@@ -51,11 +47,12 @@ export default {
       })
       this.secondCategory = this.categoryNames[index].children
     },
-    initCategory() {
+    initCategory () {
       getGoodsCategoryAll().then((res) => {
         const { data } = res
         this.categoryNames = data.categoryNames
-        console.log('www', this.categoryNames)
+        let title = parseInt(this.$route.query.title)
+        this.secondCategory = data.categoryNames.find(item => item.id === title).children
       })
     },
   },

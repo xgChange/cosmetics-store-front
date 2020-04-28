@@ -1,6 +1,6 @@
 <template>
   <div class="i-address">
-    <van-popup v-model="showArea" position="bottom" :style="{ height: '40%' }" @close="onClose">
+    <van-popup v-model="showArea" position="bottom" :style="{ height: '48%' }" @close="onClose">
       <van-address-list
         v-model="chosenAddressId"
         :list="addressList"
@@ -36,6 +36,10 @@ export default {
   },
   methods: {
     onAdd () {
+      if (this.addressList && this.addressList.length >= 3) {
+        this.$notify({ type: 'danger', message: '最多只能添加三个地址' })
+        return
+      }
       this.$router.push({ name: 'settingInfo', params: { info: 'address' }, query: { newAdd: true } })
     },
     onEdit (item, index) {

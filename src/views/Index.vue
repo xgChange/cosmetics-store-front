@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <van-sticky>
-      <i-input></i-input>
+      <i-input @focus="onFocus"></i-input>
     </van-sticky>
     <i-swipper :images="images"></i-swipper>
     <i-grid></i-grid>
@@ -33,9 +33,19 @@ export default {
     }
   },
   created () {
-    getGoodsCategoryInfoBywords('手机2').then((res) => {
-      this.goodsList = res.data
+    getGoodsCategoryInfoBywords(6).then((res) => {
+      if (res.errCode === 0) {
+        this.goodsList = res.data.map(item => {
+          item.price = item.price / 100
+          return item
+        })
+      }
     })
+  },
+  methods: {
+    onFocus (e) {
+      this.$router.push('/goods/search')
+    }
   },
   components: {
     IInput,

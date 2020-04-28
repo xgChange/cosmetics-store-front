@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     onClickLeft () {
-      this.$router.replace('/')
+      this.$router.go(-1)
     },
     onClickRight () {
       const info = this.$refs.iForm.onSubmit()

@@ -30,7 +30,7 @@ export default [
     redirect: {
       path: '/category/tabs',
       query: {
-        title: 10,
+        title: 1,
       },
     },
     children: [

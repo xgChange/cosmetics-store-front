@@ -32,27 +32,11 @@ export default {
         '//m.360buyimg.com/mobilecms/s1265x1265_jfs/t1/105898/34/1199/40347/5dbadae0E8a0fbd85/bf4afdd1ea0c12a8.jpg!q70.dpg.webp'
       ],
       isShowArea: false,
-      addressList: [
-        {
-          id: '1',
-          name: '张三',
-          tel: '13000000000',
-          address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室'
-        },
-        {
-          id: '2',
-          name: '李四',
-          tel: '1310000000',
-          address: '浙江省杭州市拱墅区莫干山路 50 号'
-        }
-      ],
       addressInfo: '',
       isShowComment: false
     }
   },
-  created () {
-    console.log('detail')
-  },
+
   methods: {
     onClickLeft () {
       if (this.isShowComment) {
@@ -63,7 +47,8 @@ export default {
     },
     showComment (v) {
       this.isShowComment = v
-    }
+    },
+
   }
 }
 </script>

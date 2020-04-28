@@ -10,7 +10,7 @@ const tabName = [
   },
   {
     path: '/category/tabs',
-    query: { title: 0 },
+    query: { title: 1 },
     name: '分类',
     alias: 'category',
   },

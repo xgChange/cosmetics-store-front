@@ -25,8 +25,16 @@ const getGoodsCategoryInfoBywords = (params) => {
   })
 }
 
+const searchGoodsByWords = (query) => {
+  return axios.request({
+    url: `/api/goods/search?key=${query}`,
+    method: 'get',
+  })
+}
+
 export {
   getGoodsDetailBywords,
   getGoodsCategoryAll,
   getGoodsCategoryInfoBywords,
+  searchGoodsByWords,
 }

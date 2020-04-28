@@ -17,7 +17,7 @@ class HttpRequest {
     //  请求拦截
     instance.interceptors.request.use(
       (config) => {
-        console.log('请求拦截：', config)
+        // console.log('请求拦截：', config)
 
         // 将Token设置到headers中
         if (localStorage.getItem('myToken'))

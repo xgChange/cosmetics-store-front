@@ -6,6 +6,7 @@
       left-icon="sortfenlei"
       right-icon="cart"
       placeholder="请输入宝贝名称"
+      @focus="onFocus"
     />
   </div>
 </template>
@@ -14,11 +15,14 @@
 export default {
   data () {
     return {
-      value: ''
+      value: '',
+      showText: true
     }
   },
   methods: {
-
+    onFocus (e) {
+      this.$emit('focus', e)
+    }
   }
 }
 </script>

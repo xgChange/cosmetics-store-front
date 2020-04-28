@@ -22,6 +22,7 @@ const unlessPath = [
   /^\/category/,
   /^\/goods/,
   /^\/index/,
+  /^\/404/,
 ]
 
 const unless = function(path, unlessPath) {

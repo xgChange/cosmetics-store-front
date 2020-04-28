@@ -15,6 +15,12 @@
     <div class="i-login-form">
       <i-form info="login" ref="iForm" @submitCb="submitCallback"></i-form>
     </div>
+    <div class="tipsArea">
+      <span>
+        没有账号？点击
+        <router-link to="/register">注册</router-link>
+      </span>
+    </div>
   </div>
 </template>
 

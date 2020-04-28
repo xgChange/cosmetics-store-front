@@ -14,6 +14,7 @@
         />
       </van-list>
     </div>
+    <van-button type="danger" block @click="logout">退出登录</van-button>
 
     <i-address :isShowArea="isShowArea" :addressList="addressList" @addressClose="onCloseArea"></i-address>
   </div>
@@ -55,6 +56,11 @@ export default {
     }
   },
   methods: {
+    logout () {
+      localStorage.clear()
+      this.$router.push('/login')
+      this.$store.dispatch('setUserInfo', null)
+    },
     onClickLeft () {
       this.$router.push('/me')
     },
