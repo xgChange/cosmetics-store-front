@@ -32,9 +32,26 @@ const searchGoodsByWords = (query) => {
   })
 }
 
+const addGoodsCollect = (data) => {
+  return axios.request({
+    url: `/api/goods/collect`,
+    method: 'post',
+    data,
+  })
+}
+
+const getGoodsCollect = () => {
+  return axios.request({
+    url: `/api/goods/getcollect`,
+    method: 'get',
+  })
+}
+
 export {
   getGoodsDetailBywords,
   getGoodsCategoryAll,
   getGoodsCategoryInfoBywords,
   searchGoodsByWords,
+  addGoodsCollect,
+  getGoodsCollect,
 }

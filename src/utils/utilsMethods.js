@@ -23,4 +23,29 @@ function strTrim(str) {
   return (str = str.replace(/\s+/g, ''))
 }
 
-export { unique, strTrim }
+// 防抖函数
+let debounce = function(fn, delay, immediate = false) {
+  let timer = null
+
+  const later = function() {
+    return setTimeout(() => {
+      if (!immediate) {
+        fn.apply(this)
+      }
+    }, delay)
+  }
+
+  return function() {
+    if (!timer) {
+      timer = later()
+      if (immediate) {
+        fn.apply(this)
+      }
+    } else {
+      clearTimeout(timer)
+      timer = later.apply(this)
+    }
+  }
+}
+
+export { unique, strTrim, debounce }

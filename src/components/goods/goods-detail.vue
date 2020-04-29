@@ -7,7 +7,7 @@
           <span class="flag">￥</span>
           <span class="price">{{goodsDetailData.price}}</span>
         </div>
-        <van-icon name="like-o" size="20"></van-icon>
+        <van-icon :name="isCollect ? 'like' : 'like-o'" size="20" @click="collect"></van-icon>
       </div>
       <div class="intro-box-content">
         <h1 class="title">{{goodsDetailData.title}}</h1>
@@ -66,8 +66,9 @@
 <script>
 import ISwipper from '../../components/common/ISwipper'
 import IAddress from '../../components/common/IAddress'
-import { getGoodsDetailBywords } from '../../api/goods/goods'
+import { getGoodsDetailBywords, addGoodsCollect, getGoodsCollect } from '../../api/goods/goods'
 import ISku from '../common/ISku'
+import { debounce } from '../../utils/utilsMethods'
 
 export default {
   components: {
@@ -86,7 +87,8 @@ export default {
       addressInfo: '',
       goodsDetailData: {},
       skuDetail: {},
-      cartStore: []
+      cartStore: [],
+      isCollect: false
     }
   },
   created () {
@@ -159,7 +161,25 @@ export default {
           this.skuDetail.price = this.goodsDetailData.price
         }
       })
-    }
+      getGoodsCollect().then(res => {
+        if (res.errCode === 0) {
+          this.isCollect = res.data ? res.data.collect : false
+        }
+      })
+    },
+    collect () {
+      this.isCollect = !this.isCollect
+      let obj = {
+        goods_id: this.goodsDetailData.id,
+        user_id: this.$store.state.user.userInfo.id,
+        collect: this.isCollect
+      }
+      addGoodsCollect(obj).then(res => {
+        if (res.errCode === 0) {
+          return
+        }
+      })
+    },
   }
 }
 </script>

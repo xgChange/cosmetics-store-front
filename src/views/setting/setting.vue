@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     addressList () {
-      return this.$store.state.user.userInfo.t_addresses
+      return this.$store.state.user.userInfo ? this.$store.state.user.userInfo.t_addresses : []
     }
   },
   methods: {
