@@ -9,7 +9,7 @@
         @click-right="onClickRight"
       />
     </div>
-    <i-form info="publish" ref="iForm"></i-form>
+    <i-form info="publish" ref="iForm" @submitCb="submitCb"></i-form>
   </div>
 </template>
 
@@ -25,6 +25,9 @@ export default {
     },
     onClickRight () {
       this.$refs.iForm.onSubmit()
+    },
+    submitCb (d) {
+      console.log(d)
     }
   }
 }

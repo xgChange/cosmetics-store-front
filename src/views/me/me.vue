@@ -24,7 +24,6 @@
     <div class="i-me-myorder">
       <div class="i-me-myorder-title">
         <span>我的订单</span>
-        <span>查看更多订单 ></span>
       </div>
       <div class="i-me-myorder-info">
         <div
@@ -60,11 +59,8 @@ export default {
       this.$router.push('/setting')
     },
     handle (index) {
-      if (index === 3) {
-        console.log('待评价')
-        this.$router.push('/publish')
-      }
-    }
+      this.$router.push({ path: '/orderlist', query: { searchId: index } })
+    },
   }
 }
 </script>

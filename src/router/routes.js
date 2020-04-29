@@ -12,6 +12,8 @@ const SettingInfo = () => import('@/views/setting/setting-info.vue')
 const Evaluation = () => import('@/views/me/evaluation.vue')
 const Login = () => import('@/views/me/login/login.vue')
 const Register = () => import('@/views/me/register/register.vue')
+const OrderSubmit = () => import('@/views/order/order-submit.vue')
+const OrderList = () => import('@/views/order/order-list.vue')
 
 export default [
   {
@@ -67,6 +69,22 @@ export default [
     path: '/login',
     name: '登录',
     component: Login,
+    meta: {
+      noShowNav: true,
+    },
+  },
+  {
+    path: '/ordersubmit',
+    name: '订单提交',
+    component: OrderSubmit,
+    meta: {
+      noShowNav: true,
+    },
+  },
+  {
+    path: '/orderlist',
+    name: '订单列表',
+    component: OrderList,
     meta: {
       noShowNav: true,
     },

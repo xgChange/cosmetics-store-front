@@ -19,7 +19,7 @@
           <template #title>
             <span>地址</span>
             <van-icon name="location-o" size="16"></van-icon>
-            <span class="location-text">{{addressInfo ? addressInfo : '湖南省怀化市鹤城区'}}</span>
+            <span class="location-text">{{addressInfo.address ? addressInfo.address : '请选择地址'}}</span>
           </template>
         </van-cell>
 
@@ -115,15 +115,20 @@ export default {
       this.isShowArea = v
     },
     selectItem (val) {
-      this.addressInfo = val.address
+      this.addressInfo = val
       this.onCloseArea(false)
     },
     showComment () {
       this.$emit('showComment', true)
     },
     buy (d) {
-      let goodsTempInfo = Object.assign(this.goodsDetailData, d)
-      console.log(goodsTempInfo)
+      if (!this.addressInfo.address) {
+        this.$toast.fail('请选择地址')
+        return
+      }
+      let goodsTempInfo = Object.assign(this.goodsDetailData, d, { addressInfo: this.addressInfo })
+      this.$store.dispatch('setGoodsInfo', goodsTempInfo)
+      this.$router.push('/ordersubmit')
     },
     // addCart (d) {
     //   let goodsTempInfo = Object.assign(this.goodsDetailData, d)

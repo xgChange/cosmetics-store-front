@@ -1,0 +1,43 @@
+.i-order-submit {
+  background: white;
+  height: 100%;
+  position: relative;
+  .i-order-info {
+    .i-order-address {
+      padding: 20px 10px 15px 10px;
+      display: flex;
+      flex-direction: row;
+      font-size: 16px;
+      background: #5a6a83;
+      color: #c8d5e3;
+      .van-icon-location-o {
+        font-size: 25px;
+        line-height: 36px;
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px 0 10px;
+        width: 100%;
+        .top {
+          font-size: 18px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .phone {
+            font-size: 16px;
+          }
+        }
+        .bottom {
+          margin-top: 10px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .submit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}

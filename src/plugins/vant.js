@@ -37,6 +37,8 @@ import {
   RadioGroup,
   Radio,
   Toast,
+  Tab,
+  Tabs,
 } from 'vant'
 
 Vue.use(Lazyload)
@@ -77,6 +79,8 @@ Vue.use(Lazyload)
   RadioGroup,
   Radio,
   Toast,
+  Tab,
+  Tabs,
 ].forEach((item) => {
   Vue.use(item)
 })
