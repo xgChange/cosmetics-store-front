@@ -2,6 +2,16 @@
  * @description 一些工具方法
  */
 
+const { format } = require('date-fns')
+
+/**
+ * 格式化时间 如
+ * @param {String} str
+ */
+function timeFormat(str) {
+  return format(new Date(str), 'yyyy-MM-dd HH:mm')
+}
+
 /**
  * @description 去重
  */
@@ -48,4 +58,4 @@ let debounce = function(fn, delay, immediate = false) {
   }
 }
 
-export { unique, strTrim, debounce }
+export { unique, strTrim, debounce, timeFormat }

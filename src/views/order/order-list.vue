@@ -54,7 +54,6 @@ export default {
             item.t_ordertetail.goodsDetail = JSON.parse(item.t_ordertetail.goodsDetail)
             return item
           })
-          console.log(this.orderMsg)
         }
       })
       // console.log(search)

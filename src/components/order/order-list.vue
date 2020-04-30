@@ -1,7 +1,7 @@
 <template>
   <div class="i-order-list">
     <van-card
-      v-for="item in orderMsg"
+      v-for="(item) in orderMsg"
       :key="item.id"
       :num="item.t_ordertetail.goodscount"
       :price="item.t_ordertetail.goodscount * (item.t_ordertetail.t_good.price / 100)"
@@ -12,7 +12,7 @@
       <template #footer>
         <van-button size="small" v-show="activeKey === 0" @click="apply(item, activeKey)">支付</van-button>
         <van-button size="small" v-show="activeKey === 2" @click="apply(item, activeKey)">确认收货</van-button>
-        <van-button size="small" v-show="activeKey === 3" @click="toComment">评价</van-button>
+        <van-button size="small" v-show="activeKey === 3" @click="toComment(item)">评价</van-button>
       </template>
     </van-card>
   </div>
@@ -39,8 +39,8 @@ export default {
     }
   },
   methods: {
-    toComment () {
-      this.$router.push('/publish')
+    toComment (item) {
+      this.$router.push({ path: '/publish', query: { goods_id: item.t_ordertetail.goods_id } })
     },
     apply (o, activeKey) {
       let obj = {

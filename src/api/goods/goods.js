@@ -47,6 +47,21 @@ const getGoodsCollect = () => {
   })
 }
 
+const createReviews = (data) => {
+  return axios.request({
+    url: `/api/goods/reviews/create`,
+    method: 'post',
+    data,
+  })
+}
+
+const findReviews = (params) => {
+  return axios.request({
+    url: `/api/goods/reviews/find/${params}`,
+    method: 'get',
+  })
+}
+
 export {
   getGoodsDetailBywords,
   getGoodsCategoryAll,
@@ -54,4 +69,6 @@ export {
   searchGoodsByWords,
   addGoodsCollect,
   getGoodsCollect,
+  createReviews,
+  findReviews,
 }

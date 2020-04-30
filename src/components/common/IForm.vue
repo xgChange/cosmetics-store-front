@@ -119,6 +119,7 @@
           maxlength="50"
           placeholder="请输入留言"
           show-word-limit
+          :rules="[{ required: true, message: '请填写内容' }]"
         />
         <van-field name="rate" label="评分">
           <template #input>
