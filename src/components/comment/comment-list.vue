@@ -1,6 +1,14 @@
 <template>
   <div class="i-comment-list">
-    <comment-content v-for="item in reviewsData" :key="item.id" :item="item"></comment-content>
+    <comment-content
+      v-for="item in reviewsData"
+      :key="item.id"
+      :grade="item.grade"
+      :blog="item.t_blog"
+      :user="item.t_user"
+      :isShowComment="showComment"
+      :isReviews="isReviews"
+    ></comment-content>
   </div>
 </template>
 
@@ -10,22 +18,26 @@ import { findReviews } from '../../api/goods/goods'
 
 export default {
   components: {
-    CommentContent
+    CommentContent,
   },
   data () {
     return {
-      reviewsData: []
+      reviewsData: [],
+      showComment: false,
+      isReviews: true
     }
   },
   created () {
-    findReviews(this.$route.params.id).then(res => {
+    findReviews(this.$route.params.id).then((res) => {
       if (res.errCode === 0) {
-        this.reviewsData = res.data
+        this.reviewsData = res.data.map((item) => {
+          item.t_user = item.t_blog.t_user
+          return item
+        })
       }
     })
-  }
+  },
 }
 </script>
 
-<style>
-</style>
+<style></style>

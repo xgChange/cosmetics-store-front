@@ -1,12 +1,55 @@
 <template>
-  <div>我是论坛路由</div>
+  <div>
+    <div class="i-cart-top-bar">
+      <van-nav-bar title="论坛" right-text="发表" @click-right="onClickRight" />
+    </div>
+    <div v-if="!isEmpty">
+      <comment-content
+        v-for="item in blogList"
+        :key="item.id"
+        :blog="item"
+        :user="item.t_user"
+        :isShowComment="showComment"
+      ></comment-content>
+    </div>
+    <div v-else>暂无信息</div>
+  </div>
 </template>
 
 <script>
-export default {
+import CommentContent from '../../components/comment/comment-content'
+import { getAllBlogsByIndex } from '../../api/blogs/blogs'
 
+export default {
+  components: {
+    CommentContent,
+  },
+  created () {
+    this.initBlogList()
+  },
+  data () {
+    return {
+      blogList: [],
+      isEmpty: false,
+      pageIndex: 1,
+      showComment: true,
+      isBlog: true
+    }
+  },
+  methods: {
+    initBlogList () {
+      getAllBlogsByIndex(1).then(res => {
+        if (res.errCode === 0) {
+          this.blogList = res.data.blogList
+          this.isEmpty = res.data.isEmpty
+        }
+      })
+    },
+    onClickRight () {
+      console.log('das')
+    }
+  }
 }
 </script>
 
-<style>
-</style>
+<style></style>

@@ -14,6 +14,7 @@ const Login = () => import('@/views/me/login/login.vue')
 const Register = () => import('@/views/me/register/register.vue')
 const OrderSubmit = () => import('@/views/order/order-submit.vue')
 const OrderList = () => import('@/views/order/order-list.vue')
+const BlogDetail = () => import('@/views/blogs/blog-detail.vue')
 
 export default [
   {
@@ -46,6 +47,14 @@ export default [
     path: '/blogs',
     name: '博客',
     component: Blogs,
+  },
+  {
+    path: '/blogs/blogDetail/:id',
+    name: 'blogDetail',
+    component: BlogDetail,
+    meta: {
+      noShowNav: true,
+    },
   },
   // {
   //   path: '/cart',

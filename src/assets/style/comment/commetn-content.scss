@@ -43,8 +43,34 @@
           margin-top: 10px;
         }
       }
-      .time {
-        font-size: 14px;
+      .bottom-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .time {
+          font-size: 14px;
+        }
+        .tocomment {
+          font-size: 16px;
+          font-weight: bolder;
+        }
+      }
+    }
+    .showComment {
+      font-size: 14px;
+      padding-top: 10px;
+      color: #a6a6a6;
+    }
+    .comment-box {
+      font-size: 16px;
+      background: #d9d9d9;
+      margin-top: 10px;
+      padding: 5px 10px;
+      overflow: hidden;
+      word-break: break-all;
+      line-height: 25px;
+      .comment-name {
+        color: #eb7350;
       }
     }
   }
