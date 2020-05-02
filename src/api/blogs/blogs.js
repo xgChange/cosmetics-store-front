@@ -18,6 +18,14 @@ const getComment = (params) => {
   })
 }
 
+const publishBlog = (data) => {
+  return axios.request({
+    url: '/api/blogs/create',
+    method: 'post',
+    data,
+  })
+}
+
 // 回复
 const createReply = (data) => {
   return axios.request({
@@ -36,4 +44,10 @@ const createComment = (data) => {
   })
 }
 
-export { getAllBlogsByIndex, getComment, createReply, createComment }
+export {
+  getAllBlogsByIndex,
+  getComment,
+  createReply,
+  createComment,
+  publishBlog,
+}

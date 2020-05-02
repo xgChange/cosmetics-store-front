@@ -1,6 +1,6 @@
 <template>
   <div class="i-goods-detail">
-    <i-swipper :images="images"></i-swipper>
+    <i-swipper :images="goodsDetailData.picture"></i-swipper>
     <div class="i-goods-detail-intro-box">
       <div class="intro-box-top">
         <div class="intro-box-top-price">
@@ -43,12 +43,12 @@
         </span>
       </div>
     </div>
-    <div class="i-goods-detail-goodsImages-box">
+    <!-- <div class="i-goods-detail-goodsImages-box">
       <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
       <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
       <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
       <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-    </div>
+    </div>-->
 
     <i-address
       :isShowArea="isShowArea"
@@ -69,6 +69,7 @@ import IAddress from '../../components/common/IAddress'
 import { getGoodsDetailBywords, addGoodsCollect, getGoodsCollect } from '../../api/goods/goods'
 import ISku from '../common/ISku'
 import { debounce } from '../../utils/utilsMethods'
+import { prefixServer } from '../../config/constKey'
 
 export default {
   components: {
@@ -157,6 +158,7 @@ export default {
         if (res.errCode === 0) {
           this.goodsDetailData = res.data[0]
           this.goodsDetailData.price = this.goodsDetailData.price / 100
+          this.goodsDetailData.picture = this.goodsDetailData.picture.split(';').map(item => prefixServer + item)
           this.skuDetail = JSON.parse(this.goodsDetailData.detail)
           this.skuDetail.price = this.goodsDetailData.price
         }

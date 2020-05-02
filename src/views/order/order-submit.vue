@@ -23,7 +23,7 @@
         :title="goodsInfo.name"
         :thumb="goodsInfo.poster"
       ></van-card>
-      <van-cell title="商品名称" value="内容" />
+      <van-cell title="商品名称" :value="goodsInfo.name" />
       <van-button @click="submit" class="submit" type="primary">提交订单</van-button>
     </div>
   </div>

@@ -2,7 +2,6 @@
   <div class="i-slide-content">
     <van-grid :border="false" :column-num="2" :gutter="10">
       <van-grid-item v-for="item in goodsArr" :key="item.id" @click="toGoodsDetail(item.id)">
-        <van-image :src="item.picture" />
         <span>{{ item.name }}</span>
       </van-grid-item>
     </van-grid>

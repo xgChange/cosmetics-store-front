@@ -4,7 +4,7 @@
     <van-grid :border="false" :column-num="2" :gutter="6">
       <van-grid-item v-for="item in goodsList" :key="item.id" @click="toDetail(item.id)">
         <div class="i-box">
-          <van-image :src="item.poster" />
+          <van-image :src="'http://localhost:3001' + item.picture" />
           <p class="i-box-intro">{{ item.name }}</p>
           <div class="i-box-price">
             <span class="flag">￥</span>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     goodsList: {

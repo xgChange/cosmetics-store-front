@@ -8,17 +8,12 @@
         <van-field
           name="picture"
           input-align="center"
+          v-model="formData.picture"
           v-if="info === 'userInfo' || info === 'register'"
         >
           <template #input>
-            <van-uploader>
-              <van-image
-                round
-                width="3rem"
-                height="3rem"
-                src="https://img.yzcdn.cn/vant/cat.jpeg"
-                fit="cover"
-              />
+            <van-uploader :after-read="afterRead">
+              <van-image round width="3rem" height="3rem" fit="cover" :src="formData.picture" />
             </van-uploader>
           </template>
         </van-field>
@@ -114,14 +109,22 @@
           rows="2"
           name="comment"
           autosize
-          label="评论"
+          :label="key === 'blog' ? '内容' : '评论'"
           type="textarea"
           maxlength="50"
           placeholder="请输入留言"
           show-word-limit
           :rules="[{ required: true, message: '请填写内容' }]"
         />
-        <van-field name="rate" label="评分">
+        <van-field name="picture" input-align="left" v-model="formData.picture">
+          <template #input>
+            <van-uploader :after-read="afterRead">
+              <van-image width="3rem" height="3rem" fit="cover" :src="formData.picture" />
+            </van-uploader>
+          </template>
+        </van-field>
+
+        <van-field name="rate" label="评分" v-if="key !== 'blog'">
           <template #input>
             <van-rate v-model="formData.rate" />
           </template>
@@ -134,6 +137,8 @@
 <script>
 import areaList from '@/utils/area.js'
 import { unique, strTrim } from '@/utils/utilsMethods.js'
+import { uploadePicture } from '../../api/user/user'
+import { prefixServer } from '../../config/constKey'
 
 export default {
   props: {
@@ -146,6 +151,7 @@ export default {
   },
   data () {
     return {
+      key: '',
       showArea: false,
       areaList,
       oldUserInfo: {},
@@ -160,11 +166,22 @@ export default {
         newpassword: '',
         phone: '',
         receiver: '',
-        receiverPhone: ''
+        receiverPhone: '',
+        picture: ''
       }
     }
   },
   methods: {
+    afterRead (file) {
+      var formData = new FormData()
+      formData.append('file', file.file)
+      uploadePicture(formData).then(res => {
+        if (res.errCode === 0) {
+          this.formData.picture = prefixServer + res.data.url
+          this.$emit('uploadSuccess', this.formData.picture)
+        }
+      })
+    },
     onSubmit (v) {
       this.$refs.vantForm.submit()
     },
@@ -205,6 +222,8 @@ export default {
     }
   },
   created () {
+    let { key } = this.$route.query
+    this.key = key
     this.formData = this.mergeFormData(this.formData, this.query)
   },
   watch: {

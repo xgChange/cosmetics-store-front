@@ -1,5 +1,6 @@
 const axios = require('axios')
 const baseURL = process.env.NODE_ENV === 'production' ? '/' : '/api'
+import { Toast } from 'vant'
 
 class HttpRequest {
   constructor(baseUrl = baseURL) {
@@ -18,7 +19,11 @@ class HttpRequest {
     instance.interceptors.request.use(
       (config) => {
         // console.log('请求拦截：', config)
-
+        Toast.loading({
+          duration: 0, // 持续展示 toast
+          forbidClick: true,
+          message: '加载中',
+        })
         // 将Token设置到headers中
         if (localStorage.getItem('myToken'))
           config.headers.Authorization =
@@ -33,6 +38,7 @@ class HttpRequest {
     // 响应拦截
     instance.interceptors.response.use(
       (res) => {
+        Toast.clear()
         // console.log('响应拦截', res)
         if (res.status === 200) {
           const { data, errCode, message } = res.data

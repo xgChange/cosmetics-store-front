@@ -35,6 +35,7 @@ export default {
         if (res.errCode === 0) {
           this.goodsList = res.data.map(item => {
             item.price = item.price / 100
+            item.picture = item.picture.split(';')[0]
             return item
           })
         }

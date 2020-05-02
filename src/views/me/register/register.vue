@@ -10,7 +10,7 @@
       />
     </div>
     <div class="i-register-form">
-      <i-form info="register" ref="iForm" @submitCb="submitCallback"></i-form>
+      <i-form info="register" ref="iForm" @submitCb="submitCallback" @uploadSuccess="uploadSuccess"></i-form>
     </div>
   </div>
 </template>
@@ -22,7 +22,8 @@ import { register } from '@/api/user/user.js'
 export default {
   data () {
     return {
-      logo: require('@/assets/image/logo.png')
+      logo: require('@/assets/image/logo.png'),
+      avatar: ''
     }
   },
   methods: {
@@ -32,10 +33,15 @@ export default {
     onClickRight () {
       const info = this.$refs.iForm.onSubmit()
     },
+    uploadSuccess (d) {
+      this.avatar = d
+    },
     submitCallback (data) {
       if (data && data.picture) {
         data.picture = data.picture.join('')
       }
+      data.picture = this.avatar
+      console.log(data)
       register(data).then(res => {
         if (!res.errCode) {
           this.$router.push('/login')

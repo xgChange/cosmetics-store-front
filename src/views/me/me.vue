@@ -3,7 +3,7 @@
     <div class="i-me-top">
       <div class="i-me-top-info">
         <div class="i-me-top-info-avatar">
-          <van-image :src="avatar" round></van-image>
+          <van-image :src="userInfo && userInfo.picture ? userInfo.picture : avatar" round></van-image>
           <div class="i-me-top-userInfo">
             <span>{{userInfo.nickname}}</span>
           </div>

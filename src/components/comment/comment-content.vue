@@ -12,7 +12,7 @@
         <div class="container">
           <div :class="[isOpen ? 'text' : 'priText']">{{ blog.content }}</div>
           <div class="readmore" v-show="readMore" @click="showReadMore">{{ isOpen ? '更多' : '收起' }}</div>
-          <van-image v-if="blog.picture" :src="blog.picture" width="130"></van-image>
+          <van-image v-if="blog.picture" :src=" blog.picture" width="130"></van-image>
         </div>
         <div class="bottom-box">
           <span class="time">{{ formateTime(blog.createdAt) }}</span>

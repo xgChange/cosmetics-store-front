@@ -50,6 +50,15 @@ const createAddressInfo = (data) => {
     data,
   })
 }
+
+const uploadePicture = (data) => {
+  return axios.request({
+    url: '/api/utils/upload',
+    method: 'post',
+    data,
+  })
+}
+
 export {
   register,
   login,
@@ -57,4 +66,5 @@ export {
   updateUserInfo,
   updateAddressInfo,
   createAddressInfo,
+  uploadePicture,
 }

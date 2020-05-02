@@ -9,13 +9,14 @@
         @click-right="onClickRight"
       />
     </div>
-    <i-form info="publish" ref="iForm" @submitCb="submitCb"></i-form>
+    <i-form info="publish" ref="iForm" @submitCb="submitCb" @uploadSuccess="uploadSuccess"></i-form>
   </div>
 </template>
 
 <script>
 import IForm from '../../components/common/IForm'
 import { createReviews } from '../../api/goods/goods'
+import { publishBlog } from '../../api/blogs/blogs'
 
 export default {
   components: {
@@ -23,12 +24,14 @@ export default {
   },
   data () {
     return {
-
+      key: '',
+      picture: ''
     }
   },
   created () {
-    let { goods_id } = this.$route.query
+    let { goods_id, key } = this.$route.query
     this.goods_id = parseInt(goods_id)
+    this.key = key
   },
   methods: {
     onClickLeft () {
@@ -37,18 +40,40 @@ export default {
     onClickRight () {
       this.$refs.iForm.onSubmit()
     },
+    uploadSuccess (d) {
+      this.picture = d
+    },
     submitCb (d) {
-      createReviews({ goods_id: this.goods_id, grade: d.rate, content: d.comment, type: 2 }).then(res => {
-        if (res.errCode === 0) {
-          this.$toast.success({
-            forbidClick: true,
-            message: '评论成功!',
-            onClose: () => {
-              this.$router.replace('/me')
-            }
-          })
-        }
-      })
+      if (d && d.picture) {
+        d.picture = d.picture.join('')
+      }
+      d.picture = this.picture
+      if (this.key === 'blog') {
+        publishBlog({ content: d.comment, type: 1, picture: d.picture }).then(res => {
+          if (res.errCode === 0) {
+            this.$toast.success({
+              forbidClick: true,
+              message: '评论成功!',
+              onClose: () => {
+                this.$router.replace('/blogs')
+              }
+            })
+          }
+        })
+      } else {
+        createReviews({ goods_id: this.goods_id, grade: d.rate, content: d.comment, type: 2, picture: d.picture }).then(res => {
+          if (res.errCode === 0) {
+            this.$toast.success({
+              forbidClick: true,
+              message: '评论成功!',
+              onClose: () => {
+                this.$router.replace('/me')
+              }
+            })
+          }
+        })
+      }
+
     }
   }
 }

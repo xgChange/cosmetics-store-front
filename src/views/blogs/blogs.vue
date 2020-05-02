@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="i-blog">
     <div class="i-cart-top-bar">
       <van-nav-bar title="论坛" right-text="发表" @click-right="onClickRight" />
     </div>
@@ -46,7 +46,7 @@ export default {
       })
     },
     onClickRight () {
-      console.log('das')
+      this.$router.push({ path: '/publish', query: { key: 'blog' } })
     }
   }
 }
