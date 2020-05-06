@@ -9,7 +9,13 @@
         @click-right="onClickRight"
       />
     </div>
-    <i-form :info="showInfo" :query="queryObj" ref="iForm" @submitCb="submitCallback"></i-form>
+    <i-form
+      :info="showInfo"
+      :query="queryObj"
+      ref="iForm"
+      @submitCb="submitCallback"
+      @uploadSuccess="uploadSuccess"
+    ></i-form>
   </div>
 </template>
 
@@ -19,7 +25,9 @@ import { updateUserInfo, createAddressInfo, updateAddressInfo } from '@/api/user
 export default {
   data () {
     return {
-      showInfo: ''
+      showInfo: '',
+      avatar: ''
+
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -36,6 +44,10 @@ export default {
     },
     onClickRight () {
       this.$refs.iForm.onSubmit()
+    },
+    uploadSuccess (d) {
+      this.avatar = d
+
     },
     submitCallback (data) {
       if (this.showInfo === 'address') {
@@ -67,6 +79,10 @@ export default {
         }
       }
       if (this.showInfo === 'userInfo') {
+        if (data && data.picture) {
+          data.picture = data.picture.join('')
+        }
+        data.picture = this.avatar
         updateUserInfo(data).then(res => {
           if (res.errCode === 0) {
             localStorage.removeItem('userInfo')

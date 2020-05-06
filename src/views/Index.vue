@@ -33,7 +33,7 @@ export default {
     }
   },
   created () {
-    getGoodsCategoryInfoBywords(1).then((res) => {
+    getGoodsCategoryInfoBywords(2).then((res) => {
       if (res.errCode === 0) {
         this.goodsList = res.data.map(item => {
           item.price = item.price / 100
