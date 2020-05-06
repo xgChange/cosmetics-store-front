@@ -1,5 +1,7 @@
+const BASE_URL = process.env.NODE_ENV === 'production' ? '/front' : '/'
+
 module.exports = {
-  publicPath: '/',
+  publicPath: BASE_URL,
   assetsDir: 'assets',
   css: {
     loaderOptions: {
