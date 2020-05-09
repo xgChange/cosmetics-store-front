@@ -3,9 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import vConsole from 'vconsole'
+
 import '@/plugins/vant.js'
 import 'amfe-flexible/index'
 Vue.config.productionTip = false
+
+const vc = new vConsole()
 
 document.addEventListener('DOMContentLoaded', resize)
 window.addEventListener('resize', resize)
@@ -20,5 +24,5 @@ function resize() {
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount('#app')

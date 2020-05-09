@@ -1,18 +1,35 @@
 <template>
-  <div class="i-order-list">
+  <div class="i-order-list-com">
     <van-card
-      v-for="(item) in orderMsg"
+      v-for="item in orderMsg"
       :key="item.id"
       :num="item.t_ordertetail.goodscount"
-      :price="item.t_ordertetail.goodscount * (item.t_ordertetail.t_good.price / 100)"
-      :desc=" item.t_ordertetail.goodsDetail.color"
+      :price="
+        item.t_ordertetail.goodscount * (item.t_ordertetail.t_good.price / 100)
+      "
+      :desc="item.t_ordertetail.goodsDetail.color"
       :title="item.t_ordertetail.t_good.name"
       :thumb="item.t_ordertetail.t_good.poster"
     >
       <template #footer>
-        <van-button size="small" v-show="activeKey === 0" @click="apply(item, activeKey)">支付</van-button>
-        <van-button size="small" v-show="activeKey === 2" @click="apply(item, activeKey)">确认收货</van-button>
-        <van-button size="small" v-show="activeKey === 3" @click="toComment(item)">评价</van-button>
+        <van-button
+          size="small"
+          v-show="activeKey === 0"
+          @click="apply(item, activeKey)"
+          >支付</van-button
+        >
+        <van-button
+          size="small"
+          v-show="activeKey === 2"
+          @click="apply(item, activeKey)"
+          >确认收货</van-button
+        >
+        <van-button
+          size="small"
+          v-show="activeKey === 3"
+          @click="toComment(item)"
+          >评价</van-button
+        >
       </template>
     </van-card>
   </div>
@@ -24,27 +41,28 @@ import { updateOrder } from '../../api/apply/apply'
 export default {
   props: {
     activeKey: {
-      type: Number
+      type: Number,
     },
     orderMsg: {
       type: Array,
-      default () {
+      default() {
         return []
-      }
-    }
+      },
+    },
   },
-  data () {
-    return {
-
-    }
+  data() {
+    return {}
   },
   methods: {
-    toComment (item) {
-      this.$router.push({ path: '/publish', query: { goods_id: item.t_ordertetail.goods_id } })
+    toComment(item) {
+      this.$router.push({
+        path: '/publish',
+        query: { goods_id: item.t_ordertetail.goods_id },
+      })
     },
-    apply (o, activeKey) {
+    apply(o, activeKey) {
       let obj = {
-        id: o.order_id
+        id: o.order_id,
       }
       if (activeKey === 0) {
         obj.status = '待发货'
@@ -54,21 +72,20 @@ export default {
         obj.status = '待评价'
       }
 
-      updateOrder(obj).then(res => {
+      updateOrder(obj).then((res) => {
         if (res.errCode === 0) {
           this.$toast.success({
             message: activeKey === 0 ? '支付成功' : '收货成功',
             forbidClick: true,
             onClose: () => {
               this.$router.go(-1)
-            }
+            },
           })
         }
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style>
-</style>
+<style></style>

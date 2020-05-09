@@ -1,9 +1,12 @@
 <template>
   <div class="i-order-list">
-    <div class="i-order-top-bar">
-      <van-nav-bar title="确认订单" left-arrow @click-left="onClickLeft" />
-    </div>
-    <van-tabs v-model="active">
+    <van-sticky>
+      <div class="i-order-top-bar">
+        <van-nav-bar title="确认订单" left-arrow @click-left="onClickLeft" />
+      </div>
+    </van-sticky>
+
+    <van-tabs v-model="active" class="i-order-list-tab">
       <van-tab title="待付款">
         <order-list :activeKey="active" :orderMsg="orderMsg"></order-list>
       </van-tab>
@@ -26,42 +29,44 @@ import { findOrder } from '../../api/apply/apply'
 
 export default {
   components: {
-    OrderList
+    OrderList,
   },
-  data () {
+  data() {
     return {
       active: 0,
       activeName: ['待付款', '待发货', '待收货', '待评价'],
-      orderMsg: []
+      orderMsg: [],
     }
   },
-  created () {
+  created() {
     this.checkRouter()
     this.initData(this.active)
   },
   watch: {
-    active (v) {
+    active(v) {
       this.initData(v)
-    }
+    },
   },
   methods: {
-    initData (key) {
+    initData(key) {
       let search = this.activeName[key]
-      findOrder(search).then(res => {
+      findOrder(search).then((res) => {
         if (res.errCode === 0) {
           const data = res.data
-          this.orderMsg = data.map(item => {
-            item.t_ordertetail.goodsDetail = JSON.parse(item.t_ordertetail.goodsDetail)
+          this.orderMsg = data.map((item) => {
+            item.t_ordertetail.goodsDetail = JSON.parse(
+              item.t_ordertetail.goodsDetail
+            )
             return item
           })
         }
       })
       // console.log(search)
     },
-    onClickLeft () {
+    onClickLeft() {
       this.$router.go(-1)
     },
-    checkRouter () {
+    checkRouter() {
       const { searchId } = this.$route.query
       if (searchId >= 0 && searchId < 4) {
         let key = parseInt(searchId)
@@ -69,10 +74,9 @@ export default {
       } else {
         this.$dialog({ message: '请求错误' }).then(() => this.$router.go(-1))
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style>
-</style>
+<style></style>
